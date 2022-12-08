@@ -29,7 +29,7 @@ if __name__ == "__main__":
         if op == 1:
             usuarioEnSesion.actualizarDatos()
         elif op == 2:
-           pass
+           print("Compra")
 
     elif option == 2:
         user = input("Ingrese nuevo usuario: ")
