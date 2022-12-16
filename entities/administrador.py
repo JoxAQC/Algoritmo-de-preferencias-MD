@@ -45,38 +45,38 @@ class Administrador(Usuario):
         estado = input("Estado: ")
         precio = float(input("Precio: "))
        
-        numHabitacion = int(input("Numero de habitacion:"))
-        new_Prod = Producto(estado, precio, desProd, numHabitacion)
-        roomn = dict(estado=new_Room.estado, precio=new_Room.precio, tipoHabitacion=new_Room.tipoHabitacion, numHabitacion=new_Room.numHabitacion)
+        #numHabitacion = int(input("Numero de habitacion:"))
+        new_Prod = Producto(estado, precio, desProd)
+        prodn = dict(estado=new_Prod.estado, precio=new_Prod.precio, desProd=new_Prod.desProd)
 
         with open(file_path2, "r") as f:
             data = json.load(f)
 
-        data.append(roomn)
+        data.append(prodn)
 
         with open(file_path2, "w") as f:
             json.dump(data, f, indent=4)
 
     def actualizar(dato):
         with open(file_path2, "r") as f:
-            habitacionTemp = json.load(f)
-        habitacion_buscar = int(input("Ingrese el numero de habitacion a editar:"))
+            productoTemp = json.load(f)
+        producto_buscar = int(input("Ingrese el numero del producto a editar:"))
 
-        for element in habitacionTemp:
-            if element["numHabitacion"] == habitacion_buscar:
+        for element in productoTemp:
+            if element["ID"] == producto_buscar:
                 if dato == 'precio':
-                    element[dato] = float(input("Ingrese actualiazación de su " + dato + ": "))
+                    element[dato] = float(input("Ingrese actualización de su " + dato + ": "))
                 else:
-                    element[dato] = str(input("Ingrese actualiazación de su " + dato + ": "))
+                    element[dato] = str(input("Ingrese actualización de su " + dato + ": "))
 
         with open(file_path2, "w") as f:
-            json.dump(habitacionTemp, f, indent=4)
+            json.dump(productoTemp, f, indent=4)
 
     def actualizarDatos(self):
         menu = """ACTUALIZAR
         1. Estado
         2. Precio
-        3. Tipo de Habitacion
+        3. Tipo de Producto
         OPCION: """
         opcion = int(input(menu))
         while opcion > 3 or opcion < 1:
@@ -87,5 +87,5 @@ class Administrador(Usuario):
         elif opcion == 2:
             dato = "precio"
         elif opcion == 3:
-            dato = "tipoHabitacion"
+            dato = "tipo"
         self.actualizar(dato)
