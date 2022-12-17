@@ -1,0 +1,86 @@
+<!-- <html> 
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<link rel="stylesheet" type="text/css" href="../static/index.css"> 
+	</head>
+	
+	<body>
+
+        <form class="grid" action="/result" method="POST">
+
+          {% if name %}
+            <center>
+              <h3 style="color: blue;" class="let_space">Hello {{name}}, How was your day!!</h3>
+            </center> 
+
+          {% endif %}
+           
+          <label for="name">Enter you name:</label>
+          <input type="text" id="name" name="name">
+
+          <center><input class="file_submit" type="Submit"></center>
+
+        </form>
+    </body>
+
+</html> -->
+
+<!DOCTYPE html>
+<!---Coding By CoderGirl | www.codinglabweb.com--->
+<html lang="en">
+<head>
+  <title>Inicio de sesión</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!--<title>Login & Registration Form | CoderGirl</title>-->
+  <!---Custom CSS File--->
+  <link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+  <div class="container">
+    <input type="checkbox" id="check">
+    <div class="login form">
+      <header>Iniciar sesión</header>
+      <form action="/login" method="POST">
+        {% if register %}
+          <center>
+          <p style="color: rgb(18, 173, 26); font-size: 13px;" class="let_space">{{register}}</p>
+          <br>
+          </center>
+        {% endif %}
+        <input type="text" placeholder="Ingresa tu usuario" id="usuario" name="usuario">
+        <input type="password" placeholder="Ingresa tu contraseña" id="contraseña" name="contraseña">
+        {% if mensaje %}
+          <center>
+          <p style="color: rgb(245, 39, 32); font-size: 13px;" class="let_space">{{mensaje}}</p>
+          </center>
+        {% endif %}
+        <center><input class="file_submit" type="Submit" value="Iniciar Sesión"></center>
+      </form>
+      <div class="signup">
+        <span class="signup">¿Aún no tienes una cuenta?
+         <label for="check">Regístrate</label>
+        </span>
+      </div>
+    </div>
+    <div class="registration form">
+      <header>Regístrarse</header>
+      <form action="/registrar" method="POST">
+        <input type="text" placeholder="Ingresa tu nombre" id="nombre" name="nombre">
+        <input type="text" placeholder="Ingresa tu apellido" id="apellido" name="apellido">
+        <input type="text" placeholder="Ingresa tu usuario" id="usuario" name="usuario">
+        <input type="text" placeholder="Ingresa tu correo" id="correo" name="correo">
+        <input type="password" placeholder="Crea una contraseña" id="contraseña" name="contraseña">
+        <center><input class="file_submit" type="Submit" value="Registrar"></center>
+      </form>
+      <div class="signup">
+        <span class="signup">¿Ya tienes un cuenta?
+         <label for="check">Inicia sesión</label>
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

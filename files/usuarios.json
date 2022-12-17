@@ -1,4 +1,4 @@
-[    
+[
     {
         "usuario": "JoxSam35",
         "contrasenia": "pbkdf2:sha256:260000$Yu6QMwKyeUOTNAHa$bf0f1f793254e730713dbb7cc4e20208c9cc49bd682687e281defb6fe3804cd0",
@@ -33,5 +33,89 @@
         "nombre": "Pedro",
         "apellido": "Barazorda",
         "correo": "pedro.barazorda@gmail.com"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$9ofL9sejX8iTo816$f4db3af5d7bc023fc3866211197e39a2c39ce3416a6c1501961b60d94fa1a15d",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$FoYMLoi9D8383rVo$84bd75faa6b556cc5fd82f9aef22c460cf5e8ee3913d4195fc73210f41333894",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$cvDYPjQ4hO4nzNH7$6438be343e1dca4e9db2173576414af30815fc28f9f70be7ed20f5c126678359",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$IG4fqYHLuz3t219p$9aebb4254e61957d32188f74f305f8f395450e6e6678d502da55f97a677337f4",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$WjAmZq5n1fG09dCQ$ab3aa8512f008b008566c34a590ba40b5b7cdafcc703591b3be68d3690f0a75b",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$zm03XOYH5GylLMrS$eb8ac7fd5457a76b2c2ed2bd8a7536df23219113313e8bd13bd1b6620c93bbd7",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$mhiIuq2wq2unTWW3$63f2dd4b3888d8727ed2becbec3bdb59d1ad337b7c20f9332003e1f9c62d2c90",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$bPT56NcxB9zrFSfw$a74ab98f2e00b4cbb79a48e2a01366961b5353fc2153de4f976fc60f12c244a4",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$sj4nSD1tq7FHcJkY$fd4b2816901534fcb59b57dfc3b338a4a43c0542108c7a5f3e30755bee73334c",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$9jvdCoJZf0O2fcUt$246ea574f9bb4827a01d2e33213e88a1e95fc553cd229a69ecc2de1686a12b8a",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$8V6SAB6M3M0phyAN$9484a03c397e89247ded2da8f875da815c7af3d9db8cdbaab2ae04fec0b85f59",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
+    },
+    {
+        "usuario": "c",
+        "contrasenia": "pbkdf2:sha256:260000$rtB7qzI8ZrFC5Zq1$69302806a05331d2540cadd72baf1d88fa68bc75172ffc952997cac535099d67",
+        "nombre": "a",
+        "apellido": "b",
+        "correo": "d"
     }
 ]
