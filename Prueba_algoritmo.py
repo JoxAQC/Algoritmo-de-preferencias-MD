@@ -1,6 +1,7 @@
 #Matrices
-
 ListaBebida = ["1","2","3","4","5","24","12","6","7","8","9","10","23","11"]
+
+#Matriz de valoracion de bebidas
 #MatrizPrincipalProductosBebida = [
 #    [1,1,0,0,0,0],
 #    [1,1,0,0,0,0],
@@ -18,6 +19,7 @@ ListaBebida = ["1","2","3","4","5","24","12","6","7","8","9","10","23","11"]
 #    [0,0,0,1,1,0]
 #   ]
 
+#Matriz de valoracion de bebidas con el id de productos en [0]
 MatrizPrincipalProductosBebida = [
     [1,1,1,0,0,0,0],
     [2,1,1,0,0,0,0],
@@ -36,6 +38,8 @@ MatrizPrincipalProductosBebida = [
    ]
 
 ListaComida = ["13","14","15","16","17","18","19","20","21","22"]
+
+#Matriz de valoracion de bebidas
 #MatrizPrincipalProductosComida = [
 #    [1,1,0,0,0,0],
 #    [1,0,1,0,0,0],
@@ -49,6 +53,7 @@ ListaComida = ["13","14","15","16","17","18","19","20","21","22"]
 #    [0,1,0,0,1,0]
 #    ]
 
+#Matriz de valoracion de bebidas con id del producto en [0]
 MatrizPrincipalProductosComida = [
     [13,1,1,0,0,0,0],
     [14,1,0,1,0,0,0],
@@ -61,8 +66,8 @@ MatrizPrincipalProductosComida = [
     [21,0,0,0,0,1,1],
     [22,0,1,0,0,1,0]
     ]
+
 Orden = []
-Pedidos = []
 
 
 #Se visualiza los productos para comprar
@@ -77,10 +82,26 @@ MPC = len(MatrizPrincipalProductosComida)
 for i in range(MPC):
     print(MatrizPrincipalProductosComida[i][0], end=" ")
     print()
-Pedidos = []
 
 #Se selecciona el pedido
-Orden = input("Digite su orden: ")
+menu = """Opcion a elegir
+1. Pedir 
+2. Salir
+"""
+
+OpcionMenu = int(input(menu))
+while OpcionMenu != 2:
+    Pedido = input("Digite su orden: ")
+    Orden.append(Pedido)
+    print(Orden)
+    menu = """Opcion a elegir
+    1. Pedir 
+    2. Salir
+    """
+    OpcionMenu = int(input(menu))
+    if OpcionMenu == 2:
+        break
+    
 
 #Numero de filas
 filas = 3
@@ -90,11 +111,11 @@ columnas = 3
 #El pedido se guarda en una matriz
 #for i in MatrizPrincipalProductosBebida:
    #if Orden == MatrizPrincipalProductosBebida[i][0]:
-for i in range(filas):
-    Pedidos.append([])
-    for j in range(columnas):
-        Pedidos[i].append(Orden)
-print(Pedidos)
+#for i in range(filas):
+#    Pedidos.append([])
+#    for j in range(columnas):
+#        Pedidos[i].append(Orden)
+#print(Pedidos)
 #for i in MatrizPrincipalProductosComida:
 #    if Orden == MatrizPrincipalProductosComida[i][0]:
 
