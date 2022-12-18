@@ -16,8 +16,9 @@ class Producto:
             if element["Stock"] > 0:
                 print()
                 print("------------------------------------------------------")
-                print("Nombre:" + element["Nombre"])
-                print("Id" + str(element["Precio"]))
+                print("Nombre: " + element["Nombre"])
+                print("Id: " + str(element["ID"]))
+                print("Precio: " + str(element["Precio"]))
                 print("------------------------------------------------------")
             #if tipo == "admin":
             #    if element["estado"] == "No disponible":

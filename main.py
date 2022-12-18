@@ -93,22 +93,8 @@ def menu_usuarios(usuarioEnSesion):
     elif op == 2:
         Producto.mostrarProducto()
         #Se selecciona el pedido
-        menuPedido = """Opcion a elegir
-        1. Pedir 
-        2. Salir
-        """
-        OpcionMenu = int(input(menuPedido))
-        while OpcionMenu == 1:
-            Pedido = input("Digite su orden: ")
-            numPedidos = Carrito.pedirProductos(Pedido)
-            menu = """Opcion a elegir
-            1. Pedir 
-            2. Salir
-            """
-            OpcionMenu = int(input(menu))
-            if OpcionMenu == 2:
-                break
-
+        CantidadPedir = int(input("Cantidad de productor a pedir: "))
+        numPedidos = Carrito.pedirProductos(CantidadPedir)
         Monto = Carrito.calcularMonto(numPedidos)
         print("MONTO A PAGAR = " + str(Monto))
         print()
