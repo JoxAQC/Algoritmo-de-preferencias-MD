@@ -4,6 +4,9 @@ from entities.administrador import Administrador
 from entities.cliente import Cliente
 from entities.paypal import PayPal
 from processes.pago import Pago
+from entities.productos import Producto
+from processes.carrito import Carrito
+from processes.preferencia import Preferencia
 
 
 def menu():
@@ -52,8 +55,8 @@ def buscar_usuario():
 
 def menu_admin(usuarioEnSesion):
     menu = """
-    1.- Registrar habitacion
-    2.- Actualizar datos de habitacion
+    1.- Registrar Producto
+    2.- Actualizar datos del producto
     3.- Actualizar contrasenia
     4.- Buscar habitacion y mostrar datos
     5.- Mostrar catalogo de habitaciones
@@ -88,6 +91,36 @@ def menu_usuarios(usuarioEnSesion):
     if op == 1:
         usuarioEnSesion.actualizarDatos()
     elif op == 2:
+        Producto.mostrarProducto()
+        #Se selecciona el pedido
+        menuPedido = """Opcion a elegir
+        1. Pedir 
+        2. Salir
+        """
+        OpcionMenu = int(input(menuPedido))
+        while OpcionMenu == 1:
+            Pedido = input("Digite su orden: ")
+            numPedidos = Carrito.pedirProductos(Pedido)
+            menu = """Opcion a elegir
+            1. Pedir 
+            2. Salir
+            """
+            OpcionMenu = int(input(menu))
+            if OpcionMenu == 2:
+                break
+
+        Monto = Carrito.calcularMonto(numPedidos)
+        print("MONTO A PAGAR = " + str(Monto))
+        print()
+
+        tipoProducto = "comida"
+        if tipoProducto == "bebida":
+            calificaProductos = calificaBebidas
+        else: 
+            calificaProductos = calificaComidas
+        #recomendaciones = Preferencia.calcularRecomendaciones(productosSeleccionados,tipoProducto,calificaProductos)
+        recomendaciones = Preferencia.calcularRecomendaciones(numPedidos,tipoProducto,calificaProductos)
+
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard
@@ -132,7 +165,7 @@ def menu_usuarios(usuarioEnSesion):
         c = metPagoIngresado.verificarCaducidad()
 
         if a and b and c:
-            nuevoPago = Pago("concepto", 20, metPago, cuenta)
+            nuevoPago = Pago(numPedidos, Monto, metPago, cuenta)
 
             if nuevoPago.pagar():
                 nuevoPago.registrarTransaccion()
@@ -140,6 +173,10 @@ def menu_usuarios(usuarioEnSesion):
                 pago = nuevoPago.cambiarFormato()
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()
+
+                print("Le recomendamos las sgtes. " + tipoProducto + "s: ")
+                for element in recomendaciones:
+                    print(element," ")
 
         else:
             print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")
