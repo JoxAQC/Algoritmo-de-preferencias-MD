@@ -8,11 +8,25 @@ file_path11 = "files/bebidasTabla.json"
 file_path22 = "files/comidasTabla.json"
 
 class Preferencia:
-    
+    def solicitarCalificaciones(arreglo):
+        calificaciones = []
+
+        with open(file_path, "r") as f:
+            productos = json.load(f)
+
+        for element in productos:
+            for elemento in arreglo:
+                if element["ID"] == elemento:
+                    calificaciones.append(int(input("Ingrese la calificacion del 1-10 de "+str(element["Nombre"])+":")))
+
+        return calificaciones
+
     def clasificarProductos(productosSeleccionados,tipoProducto):
         arregloBebidas = []
         arregloComidas = []
+    
         for producto in productosSeleccionados:
+            
             if tipoProducto == "bebida":
                 with open(file_path1, "r") as f:
                     bebidas = json.load(f)
@@ -25,7 +39,7 @@ class Preferencia:
                 for element in comidas:
                     if producto == element:
                         arregloComidas.append(producto)
-        
+
         if tipoProducto == "bebida":
             return arregloBebidas 
         else:

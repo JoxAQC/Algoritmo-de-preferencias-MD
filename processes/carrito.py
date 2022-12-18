@@ -5,7 +5,7 @@ file_path = "files/productos.json"
 class Carrito:
     def __init__(self, idpedido, cantidadSeleccionada, cantidad, productosSeleccionados):
         self._idpedido = idpedido
-        self._cantidadSeleccioanda = cantidadSeleccionada
+        self._cantidadSeleccionada = cantidadSeleccionada
         self._cantidad = cantidad
         self._productosSeleccionados = productosSeleccionados
 
@@ -13,9 +13,7 @@ class Carrito:
     def pedirProductos(cantidadSeleccionada):
         productosSeleccionados = []
         for i in range(cantidadSeleccionada):
-            productosSeleccionados.append(input("Ingrese el id del "
-                    + str(i + 1)
-                    + " producto a pedir:"))
+            productosSeleccionados.append(int(input("Ingrese el id del "+ str(i + 1)+ " producto a pedir:")))
         return productosSeleccionados
 
     def calcularMonto(productosSeleccionados):

@@ -93,20 +93,11 @@ def menu_usuarios(usuarioEnSesion):
     elif op == 2:
         Producto.mostrarProducto()
         #Se selecciona el pedido
-        CantidadPedir = int(input("Cantidad de productor a pedir: "))
+        CantidadPedir = int(input("Cantidad de productos a pedir: "))
         numPedidos = Carrito.pedirProductos(CantidadPedir)
-        Monto = Carrito.calcularMonto(numPedidos)
-        print("MONTO A PAGAR = " + str(Monto))
-        print()
-
-        tipoProducto = "comida"
-        if tipoProducto == "bebida":
-            calificaProductos = calificaBebidas
-        else: 
-            calificaProductos = calificaComidas
-        #recomendaciones = Preferencia.calcularRecomendaciones(productosSeleccionados,tipoProducto,calificaProductos)
-        recomendaciones = Preferencia.calcularRecomendaciones(numPedidos,tipoProducto,calificaProductos)
-
+        #Monto = Carrito.calcularMonto(numPedidos)
+        #print("MONTO A PAGAR = " + str(Monto))
+        
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard
@@ -160,9 +151,22 @@ def menu_usuarios(usuarioEnSesion):
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()
 
-                print("Le recomendamos las sgtes. " + tipoProducto + "s: ")
-                for element in recomendaciones:
-                    print(element," ")
+                tipo1 = "bebida"
+                tipo2 = "comida"
+                arregloBebidas = Preferencia.clasificarProductos(numPedidos,tipo1)
+                arregloComidas = Preferencia.clasificarProductos(numPedidos,tipo2)
+                if(len(arregloBebidas)>= 1):
+                    calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
+                    recomendacionesBebidas = Preferencia.calcularRecomendaciones(numPedidos,tipo1,calificaBebidas)
+                    print("Le recomendamos las sgtes. "+tipo1+"s: ")
+                    for element in recomendacionesBebidas:
+                        print("--> "+element," ")
+                if(len(arregloComidas)>= 1):
+                    calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
+                    recomendacionesComidas = Preferencia.calcularRecomendaciones(numPedidos,tipo2,calificaComidas)
+                    print("Le recomendamos las sgtes. "+tipo2+"s: ")
+                    for element in recomendacionesComidas:
+                        print("--> "+element," ")
 
         else:
             print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")
