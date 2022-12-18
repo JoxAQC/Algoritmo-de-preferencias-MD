@@ -43,7 +43,8 @@ app = Flask(__name__)
 @app.route('/home')
 def home():
     return render_template("index.html")
-    
+
+usuarioEnSesion = None  
 
 @app.route('/login',methods=['POST', 'GET'])
 def iniciar_sesion():
@@ -51,6 +52,8 @@ def iniciar_sesion():
     print(output)
     usuario = output["usuario"]
     contraseña = output["contraseña"]
+
+    global usuarioEnSesion 
 
     usuarioEnSesion, tipo = buscar_usuario(usuario, contraseña)
 
@@ -80,12 +83,16 @@ def registrar():
 
     register = "Registrado correctamente, inicie sesión para continuar"
 
-    return render_template("index.html", mensaje = register)
+    return render_template("index.html", register = register)
 
 
 @app.route('/profile',methods=['POST', 'GET'])
 def mostrar_perfil():
-    return render_template("user.html")
+    usuario = usuarioEnSesion._usuario
+    correo = usuarioEnSesion._correo
+    nombre = usuarioEnSesion._nombre
+    apellido = usuarioEnSesion._apellido
+    return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido)
 
 if __name__ == "__main__":
     app.run(debug=True)
