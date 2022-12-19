@@ -9,7 +9,6 @@ from processes.carrito import Carrito
 from processes.preferencia import Preferencia
 from entities.Registro import Registro
 
-
 def menu():
     menu = """
     ---------BIENVENIDOS AL CAFE PELUCHE STAR----------
@@ -56,26 +55,26 @@ def buscar_usuario():
 
 def menu_admin(usuarioEnSesion):
     menu = """
-    1.- Registrar Producto
-    2.- Actualizar datos del producto
-    3.- Actualizar contrasenia
-    4.- Buscar habitacion y mostrar datos
-    5.- Mostrar catalogo de habitaciones
+    1.- Reporte de Ventas
+    2.- Mostrar Cátalogo de Productos 
     Elija una opcion: """
     option = int(input(menu))
     if option == 1:
-        pass
+        ventaTotal = Administrador.calcularVentaTotal()
+        ventaBebidas = Administrador.calcularVentaBebidas()
+        ventaComidas = Administrador.calcularVentaComidas()
+        porcentajeBebidas = Administrador.calcularPorcentaje(ventaTotal,ventaBebidas)
+        porcentajeComidas = Administrador.calcularPorcentaje(ventaTotal,ventaComidas)
+        print("---------REPORTE DE VENTAS-----------")
+        print("--> Venta Total = S/ ",ventaTotal)
+        print("--> Venta Bebidas = S/ ",ventaBebidas)
+        print("--> Venta Comidas = S/ ",ventaComidas)
+        print("--> % Venta Bebidas sobre el Total= "+str(porcentajeBebidas)+"%")
+        print("--> % Venta Comidas sobre el Total= "+str(porcentajeComidas)+"%")
+        ventaBebidaPotencial = Administrador.calcularBebidaPotencial()
+        print("--> Venta Bebida más vendida= S/ ",ventaBebidaPotencial)
 
     elif option == 2:
-        usuarioEnSesion.actualizarDatos()
-
-    elif option == 3:
-        usuarioEnSesion.actualizarContrasenia()
-
-    elif option == 4:
-        pass
-
-    elif option == 5:
         pass
 
     else:
