@@ -146,8 +146,8 @@ def menu_usuarios(usuarioEnSesion):
         c = metPagoIngresado.verificarCaducidad()
 
         if a and b and c:
-            nombre = Carrito.nombrepd(numPedidos)
-            nuevoPago = Pago(Monto, metPago, cuenta,numPedidos,nombre)
+         
+            nuevoPago = Pago(numPedidos, Monto, metPago, cuenta)
 
             if nuevoPago.pagar():
                 nuevoPago.registrarTransaccion()

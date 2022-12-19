@@ -6,15 +6,13 @@ import datetime
 file_path1 = "files/pagos.json"
 
 class Pago:
-    def _init_(self, monto, metPago, cuenta,id,nombre):
+
+    def __init__(self, concepto, monto, metPago, cuenta):
         self._numOperacion = str(uuid.uuid4())
-        self._fecha = str(
-            datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S")
-        )
+        self._concepto = "Pago por reserva de habitaciones: " + concepto
+        self._fecha = str(datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S"))
         self._monto = monto
         self._metPago = {"Metodo de pago": metPago, "Cuenta": cuenta}
-        self._id= "ID" + id 
-        self._nombre= "Nombre" + nombre
 
     def pagar(self):
         if "Tarjeta" in self._metPago["Metodo de pago"]:
@@ -41,10 +39,7 @@ class Pago:
         return monto_suficiente
 
     def cambiarFormato(self):
-        RegistroPago = dict(
-            id=self._id,
-            nombre=self._nombre,
-        )
+        RegistroPago = dict(Codigo = self._numOperacion, Concepto = self._concepto, Fecha = self._fecha, Monto = self._monto, MetodoPago = self._metPago)
         return RegistroPago
 
     def registrarTransaccion(self):
