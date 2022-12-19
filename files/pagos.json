@@ -1,2 +1,12 @@
 [
+    {
+        "Codigo": "8d1fd5e4-1049-4cd6-8359-b604cfb397ea",
+        "Concepto": "Pago por productos con ID: [9, 21]",
+        "Fecha": "19/12/2022 15:46:32",
+        "Monto": 12,
+        "MetodoPago": {
+            "Metodo de pago": "Tarjeta",
+            "Cuenta": 5102575553380988
+        }
+    }
 ]
