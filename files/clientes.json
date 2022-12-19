@@ -1,2 +1,11 @@
 [
+    {
+        "usuario": "JoxSam35",
+        "contrasenia": "pbkdf2:sha256:260000$XwnZpiWvfk6lGozW$98c25375bb91abf63c79d9797192d501ec1b6269575edb5158ceb152c71003bd",
+        "nombre": "Jose",
+        "apellido": "Quispe",
+        "correo": "jose.quispe@gmail.com",
+        "pago": [
+        ]
+    }
 ]

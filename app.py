@@ -99,5 +99,37 @@ def mostrar_perfil():
 def mostrar_orden():
     return render_template("orden.html")
 
+
+@app.route('/pagar',methods=['POST', 'GET'])
+def pagar():
+    output = request.form.to_dict()
+    codigo = output["codigo"]
+    tarjeta = output["tarjeta"]
+    nombre = output["nombre"]
+    apellido = output["apellido"]
+    emisor = output["emisor"]
+    fecha = output["fecha"]
+
+    metPagoIngresado = Tarjeta(tarjeta, fecha, codigo, nombre, apellido, emisor)
+
+    a = metPagoIngresado.verificar()
+    b = metPagoIngresado.verificarBloqueo() == False
+    c = metPagoIngresado.verificarCaducidad()
+
+    if a and b and c:
+        nuevoPago = Pago("1", "Espresso")
+
+        nuevoPago.registrarTransaccion()
+        pago = nuevoPago.cambiarFormato()
+        nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, pago)
+        nuevo_cliente.registrar()
+        mensaje = "Pago exitoso"
+        return render_template("orden.html", passed = mensaje)
+    else:
+        mensaje = "Compruebe la información de su método de pago e inténtalo de nuevo"
+
+    return render_template("orden.html", mensaje = mensaje)
+
+
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,12 +1,5 @@
 [
     {
-        "usuario": "JoxSam35",
-        "contrasenia": "pbkdf2:sha256:260000$Yu6QMwKyeUOTNAHa$bf0f1f793254e730713dbb7cc4e20208c9cc49bd682687e281defb6fe3804cd0",
-        "nombre": "Jose",
-        "apellido": "Quispe",
-        "correo": "jose.quispe@gmail.com"
-    },
-    {
         "usuario": "Ghopst",
         "contrasenia": "pbkdf2:sha256:260000$rglDLkVSldsPluUy$92c51c6d099143ac87b860d544bbb312df1deb326fd2561ee02e7b7156c78056",
         "nombre": "Gianfranco",

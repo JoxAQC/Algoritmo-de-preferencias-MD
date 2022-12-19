@@ -41,7 +41,7 @@ class Tarjeta(Metodo):
 
     def verificarBloqueo(self):
         passed = False
-        with open("files/numeroBloqueado.json", "r") as f:
+        with open("files/numerobloqueado.json", "r") as f:
             numerosBloqueados = json.load(f)
 
         for element in numerosBloqueados:

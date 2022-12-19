@@ -1018,6 +1018,7 @@
         ids.push(boton22.id)
     }
     function comprar(){
+        localStorage.setItem('ids', JSON.stringify(ids))
         localStorage.setItem('productos', JSON.stringify(carrito))
     }
 

@@ -67,39 +67,48 @@
     <h3 class="sub-heading"> order now </h3>
     <h1 class="heading"> free and fast </h1>
 
-    <form action="">
+    <form action="/pagar" method="POST">
 
         <div class="inputBox">
             <div class="input">
                 <span>Nombre</span>
-                <input type="text" placeholder="Ingrese su nombre">
+                <input type="text" placeholder="Ingrese su nombre" name="nombre">
             </div>
             <div class="input">
                 <span>Apellido</span>
-                <input type="text" placeholder="Ingrese su apellido">
+                <input type="text" placeholder="Ingrese su apellido" name="apellido">
             </div>
         </div>
         <div class="inputBox">
             <div class="input">
                 <span>Tarjeta</span>
-                <input type="text" placeholder="Ingrese su numero de tarjeta">
+                <input type="text" placeholder="Ingrese su numero de tarjeta" name="tarjeta">
             </div>
             <div class="input">
                 <span>Codigo</span>
-                <input type="password" placeholder="Ingrese su codigo de seguridad">
+                <input type="password" placeholder="Ingrese su codigo de seguridad" name="codigo">
             </div>
         </div>
         <div class="inputBox">
             <div class="input">
                 <span>Emisor</span>
-                <input type="text" placeholder="Ingrese el emisor">
+                <input type="text" placeholder="Ingrese el emisor" name="emisor">
             </div>
             <div class="input">
                 <span>Fecha</span>
-                <input type="datetime-local">
+                <input type="text" placeholder="Ingrese la fecha de caducidad" name="fecha">
             </div>
         </div>
-
+        {% if mensaje %}
+            <center>
+            <p style="color: rgb(66, 226, 138); font-size: 13px;" class="let_space">{{mensaje}}</p>
+            </center>
+        {% endif %}
+        {% if mensaje %}
+            <center>
+            <p style="color: rgb(245, 39, 32); font-size: 13px;" class="let_space">{{mensaje}}</p>
+            </center>
+        {% endif %}
         <input type="submit" value="order now" class="btn">
 
     </form>
