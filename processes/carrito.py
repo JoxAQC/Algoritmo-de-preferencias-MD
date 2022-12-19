@@ -10,9 +10,6 @@ class Carrito:
         self._cantidadSeleccionada = cantidadSeleccionada
         self._cantidad = cantidad
         self._productosSeleccionados = productosSeleccionados
-        self._fecha = str(
-            datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S")
-        )
 
 
     def pedirProductos(cantidadSeleccionada):
@@ -23,24 +20,39 @@ class Carrito:
 
     def calcularMonto(productosSeleccionados):
         montoC = 0
-        print(productosSeleccionados)
         for element in productosSeleccionados:
             with open(file_path, "r") as f: #abrie el json productos
                 data = json.load(f)
-                for productosSeleccionados in data: #matriz en el archivo
-                    if str(productosSeleccionados["ID"]) == element:
-                        montoC = montoC + element["Precio"]
+            for productosSeleccionados in data: #matriz en el archivo
+                if productosSeleccionados["ID"] == element:
+                    montoC = montoC + productosSeleccionados["Precio"]
         return montoC
 
-    #def obtenerDatos(productosSeleccionados):
-    #    for element in productosSeleccionados:
-    #        with open(file_path, "r") as f:
-    #            data = json.load(f)
-    #        for productosSeleccionados in data:
-    #            if str(productosSeleccionados["ID"]) == element:
-    #                Nombre = element["Nombre"]
-    #                ID = element["ID"]
-    #                Precio = element["Precio"]
-    #            RegistrarD = dict(Nombre, ID, Precio)
-    #    return RegistrarD
+    def nombrepd(productosSeleccionados):
+        for element in productosSeleccionados:
+            with open(file_path, "r") as f: #abrie el json productos
+                data = json.load(f)
+            for productosSeleccionados in data: #matriz en el archivo
+                if productosSeleccionados["ID"] == element:
+                    nombre = productosSeleccionados["Nombre"]
+        return nombre
+    
+    def preciopd(productosSeleccionados):
+        for element in productosSeleccionados:
+            with open(file_path, "r") as f: #abrie el json productos
+                data = json.load(f)
+            for productosSeleccionados in data: #matriz en el archivo
+                if productosSeleccionados["ID"] == element:
+                    precio = productosSeleccionados["Precio"]
+        return precio
+    
+    def idpd(productosSeleccionados):
+        for element in productosSeleccionados:
+            with open(file_path, "r") as f: #abrie el json productos
+                data = json.load(f)
+            for productosSeleccionados in data: #matriz en el archivo
+                if productosSeleccionados["ID"] == element:
+                    id = productosSeleccionados["ID"]
+        return id
+
 

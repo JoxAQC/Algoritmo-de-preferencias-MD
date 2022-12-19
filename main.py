@@ -99,7 +99,11 @@ def menu_usuarios(usuarioEnSesion):
         Monto = Carrito.calcularMonto(numPedidos)
         print("MONTO A PAGAR = " + str(Monto))
         #registrar pedido
-        Registro.RegistrarPedidos(numPedidos)
+        nombreP = Carrito.nombrepd(numPedidos)
+        precioP = Carrito.preciopd(numPedidos)
+        idP = Carrito.idpd(numPedidos)
+        registrarped = Registro(nombreP, idP, precioP)
+        registrarped.registrar()
 
 
         menuPago = """
