@@ -7,6 +7,7 @@ from processes.pago import Pago
 from entities.productos import Producto
 from processes.carrito import Carrito
 from processes.preferencia import Preferencia
+from entities.Registro import Registro
 
 
 def menu():
@@ -95,9 +96,12 @@ def menu_usuarios(usuarioEnSesion):
         #Se selecciona el pedido
         CantidadPedir = int(input("Cantidad de productos a pedir: "))
         numPedidos = Carrito.pedirProductos(CantidadPedir)
-        #Monto = Carrito.calcularMonto(numPedidos)
-        #print("MONTO A PAGAR = " + str(Monto))
-        
+        Monto = Carrito.calcularMonto(numPedidos)
+        print("MONTO A PAGAR = " + str(Monto))
+        #registrar pedido
+        Registro.RegistrarPedidos(numPedidos)
+
+
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard

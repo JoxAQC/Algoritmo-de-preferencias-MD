@@ -1,13 +1,18 @@
+import datetime
 import json
 
 file_path = "files/productos.json"
+file_path2 = "files/pedidos.json"
 
 class Carrito:
-    def __init__(self, idpedido, cantidadSeleccionada, cantidad, productosSeleccionados):
-        self._idpedido = idpedido
+    def __init__(self, id, cantidadSeleccionada, cantidad, productosSeleccionados):
+        self._id = id
         self._cantidadSeleccionada = cantidadSeleccionada
         self._cantidad = cantidad
         self._productosSeleccionados = productosSeleccionados
+        self._fecha = str(
+            datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S")
+        )
 
 
     def pedirProductos(cantidadSeleccionada):
@@ -17,13 +22,25 @@ class Carrito:
         return productosSeleccionados
 
     def calcularMonto(productosSeleccionados):
-        monto = 0
+        montoC = 0
+        print(productosSeleccionados)
         for element in productosSeleccionados:
-            with open(file_path, "r") as f:
+            with open(file_path, "r") as f: #abrie el json productos
                 data = json.load(f)
-            for productosSeleccionados in data:
-                if str(productosSeleccionados["ID"]) == element:
-                    monto = monto + productosSeleccionados["Precio"]
-                    cantidad = productosSeleccionados.count(element)
+                for productosSeleccionados in data: #matriz en el archivo
+                    if str(productosSeleccionados["ID"]) == element:
+                        montoC = montoC + element["Precio"]
+        return montoC
 
-        return monto * cantidad
+    #def obtenerDatos(productosSeleccionados):
+    #    for element in productosSeleccionados:
+    #        with open(file_path, "r") as f:
+    #            data = json.load(f)
+    #        for productosSeleccionados in data:
+    #            if str(productosSeleccionados["ID"]) == element:
+    #                Nombre = element["Nombre"]
+    #                ID = element["ID"]
+    #                Precio = element["Precio"]
+    #            RegistrarD = dict(Nombre, ID, Precio)
+    #    return RegistrarD
+

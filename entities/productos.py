@@ -1,6 +1,7 @@
 import json
 
 file_path = "files/productos.json"
+file_path2 = "files/pedidos.json"
 
 class Producto:
     def __init__(self, nombre, id, stock, categorias):
@@ -29,3 +30,26 @@ class Producto:
             #        print("Tipo de la habitacion:" + element["tipoHabitacion"])
             #        print("Numero de la habitacion:" + str(element["numHabitacion"]))
             #        print("------------------------------------------------------")
+  
+    #def guardarBD(self,productosSeleccionados):
+    #    with open(file_path2, "r") as f:
+    #        guardar = json.load(f)
+    #    for element in guardar:
+    #        for i in productosSeleccionados:
+    #            if element["ID"] == i:
+    #                nombre = element["Nombre"]
+    #                precio = element["Precio"]
+    #                id = element["ID"]
+    #    RegistrarDatos = dict(id, nombre, precio, fecha=self._fecha)
+    #    return RegistrarDatos
+
+    #def registrarDatos(self):
+    #    RegistrarD = self.guardarBD()    
+    #    with open(file_path, "r") as f:
+
+    #        guardar = json.load(f)
+
+    #   guardar.append(RegistrarD)
+
+    #    with open(file_path2, "w") as f:
+    #        json.dump(guardar,f ,indent=4)
