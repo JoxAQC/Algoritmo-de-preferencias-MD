@@ -10,7 +10,6 @@ for element in usuarios:
     print("function añadir"+str(element["ID"])+"(){")
     print("    carrito.push(new Producto(\"static/images/menu-"+str(i)+".png\",\""+str(element["Nombre"])+"\","+str(element["Precio"])+",boton"+str(element["ID"])+".id))")
     print("    ids.push(boton"+str(element["ID"])+".id)")
-    print("    window.alert(ids)")
     print("}")
 
     # print("")

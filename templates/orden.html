@@ -50,51 +50,10 @@
     <br>
     <br>
     <br>
+    <h3 class="sub-heading"> Tu pedido </h3>
     <h1 class="heading"> carrito </h1>
 
-    <div class="box-container">
-        <p id="lista"></p>
-        <div class="box">
-            <div class="image">
-                <img src="static/images/menu-1.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Espresso</h3>
-                <span class="price">$12.99</span>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="static/images/menu-1.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Espresso</h3>
-                <span class="price">$12.99</span>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="static/images/menu-1.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Espresso</h3>
-                <span class="price">$12.99</span>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="image">
-                <img src="static/images/menu-1.png" alt="">
-            </div>
-            <div class="content">
-                <h3>Espresso</h3>
-                <span class="price">$12.99</span>
-            </div>
-        </div>
-
-    </div>
+    <div class="box-container" id="lista"></div>
 
 </section>
 
@@ -112,42 +71,32 @@
 
         <div class="inputBox">
             <div class="input">
-                <span>your name</span>
-                <input type="text" placeholder="enter your name">
+                <span>Nombre</span>
+                <input type="text" placeholder="Ingrese su nombre">
             </div>
             <div class="input">
-                <span>your number</span>
-                <input type="number" placeholder="enter your number">
-            </div>
-        </div>
-        <div class="inputBox">
-            <div class="input">
-                <span>your order</span>
-                <input type="text" placeholder="enter food name">
-            </div>
-            <div class="input">
-                <span>additional food</span>
-                <input type="test" placeholder="extra with food">
+                <span>Apellido</span>
+                <input type="text" placeholder="Ingrese su apellido">
             </div>
         </div>
         <div class="inputBox">
             <div class="input">
-                <span>how musch</span>
-                <input type="number" placeholder="how many orders">
+                <span>Tarjeta</span>
+                <input type="text" placeholder="Ingrese su numero de tarjeta">
             </div>
             <div class="input">
-                <span>date and time</span>
+                <span>Codigo</span>
+                <input type="password" placeholder="Ingrese su codigo de seguridad">
+            </div>
+        </div>
+        <div class="inputBox">
+            <div class="input">
+                <span>Emisor</span>
+                <input type="text" placeholder="Ingrese el emisor">
+            </div>
+            <div class="input">
+                <span>Fecha</span>
                 <input type="datetime-local">
-            </div>
-        </div>
-        <div class="inputBox">
-            <div class="input">
-                <span>your address</span>
-                <textarea name="" placeholder="enter your address" id="" cols="30" rows="10"></textarea>
-            </div>
-            <div class="input">
-                <span>your message</span>
-                <textarea name="" placeholder="enter your message" id="" cols="30" rows="10"></textarea>
             </div>
         </div>
 
@@ -299,32 +248,20 @@
 
 <script>
     productoLS = JSON.parse(localStorage.getItem('productos'));
-    window.alert(productoLS);
     var lista = document.getElementById("lista");
-    var list =[];
-    productoLS.forEach(function (producto){
-        window.alert(producto.nombre);
-        list.push(producto.nombre);
+    var list = "";
+    productoLS.forEach(function (producto){ 
+        texto = `<div class="box">
+                    <div class="image">
+                        <img src="${producto.imagen}" alt="">
+                    </div>
+                    <div class="content">
+                        <h3>${producto.nombre}</h3> <span class="price">s/${producto.precio}</span>
+                    </div>
+                </div>`;
+        list+=texto
     });
-    lista.innerHTML += list[1]
-    // var list =[]
-    // function leerLocalStorageCompra(){
-    //     productoLS.forEach(function (producto){
-    //         window.alert(producto.nombre)
-    //         list.push[producto.nombre]
-    // //         //     <div class="box">
-    // //         //         <div class="image">
-    // //         //             <img src="${producto.imagen}" alt="">
-    // //         //         </div>
-    // //         //         <div class="content">
-    // //         //             <h3>${producto.nombre}</h3>
-    // //         //             <span class="price">${producto.precio}</span>
-    // //         //         </div>
-    // //         //     </div>
-    // //         // `;
-    //     });
-    // }
-    // lista.innerHTML += list[0]
+    lista.innerHTML += list;
 </script>
 
 </body>
