@@ -73,6 +73,8 @@ def menu_admin(usuarioEnSesion):
         print("--> % Venta Comidas sobre el Total= "+str(porcentajeComidas)+"%")
         ventaBebidaPotencial = Administrador.calcularBebidaPotencial()
         print("--> Venta Bebida más vendida= S/ ",ventaBebidaPotencial)
+        ventaComidaPotencial = Administrador.calcularComidaPotencial()
+        print("--> Venta Comida más vendida= S/ ",ventaComidaPotencial)
 
     elif option == 2:
         pass

@@ -109,3 +109,27 @@ class Administrador(Usuario):
         print("--> La bebida más vendida fue: "+str(bebida))
         return precio*cantPotencial
 
+    def calcularComidaPotencial():
+        arregloTotal=[]
+        with open(file_path1, "r") as f:
+            pedidos = json.load(f)  
+        for element in pedidos:
+            for lista in element["numPedidos"]:
+                arregloTotal.append(lista)
+        tipo = "comida"
+        listaComida = Preferencia.clasificarProductos(arregloTotal,tipo)
+        lista = pd.Series(listaComida) 
+        resultados = pd.Series(lista.value_counts())
+        arreglo = numpy.array(resultados)
+        cantPotencial = arreglo[0]
+        for element in listaComida:
+            if listaComida.count(element) == cantPotencial:
+                comidaPotencial = element
+        with open(file_path2, "r") as f:
+            productos = json.load(f)
+        for element in productos:
+            if element["ID"]==comidaPotencial:
+                comida = element["Nombre"]
+                precio = element["Precio"]
+        print("--> La comida más vendida fue: "+str(comida))
+        return precio*cantPotencial
