@@ -98,13 +98,9 @@ def menu_usuarios(usuarioEnSesion):
         numPedidos = Carrito.pedirProductos(CantidadPedir)
         Monto = Carrito.calcularMonto(numPedidos)
         print("MONTO A PAGAR = " + str(Monto))
-        #registrar pedido
-        nombreP = Carrito.nombrepd(numPedidos)
-        precioP = Carrito.preciopd(numPedidos)
-        idP = Carrito.idpd(numPedidos)
-        registrarped = Registro(nombreP, idP, precioP)
-        registrarped.registrar()
-
+        new_Pedido = Registro(numPedidos,Monto)
+        new_Pedido.registrar()
+        
 
         menuPago = """
         Seleccione el metodo de pago:

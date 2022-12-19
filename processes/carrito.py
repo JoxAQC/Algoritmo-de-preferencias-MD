@@ -29,30 +29,33 @@ class Carrito:
         return montoC
 
     def nombrepd(productosSeleccionados):
+        nombre = []
         for element in productosSeleccionados:
             with open(file_path, "r") as f: #abrie el json productos
                 data = json.load(f)
             for productosSeleccionados in data: #matriz en el archivo
                 if productosSeleccionados["ID"] == element:
-                    nombre = productosSeleccionados["Nombre"]
+                    nombre.append(productosSeleccionados["Nombre"])
         return nombre
     
     def preciopd(productosSeleccionados):
+        precio = []
         for element in productosSeleccionados:
             with open(file_path, "r") as f: #abrie el json productos
                 data = json.load(f)
             for productosSeleccionados in data: #matriz en el archivo
                 if productosSeleccionados["ID"] == element:
-                    precio = productosSeleccionados["Precio"]
+                    precio.append(productosSeleccionados["Precio"])
         return precio
     
     def idpd(productosSeleccionados):
+        id = []
         for element in productosSeleccionados:
             with open(file_path, "r") as f: #abrie el json productos
                 data = json.load(f)
             for productosSeleccionados in data: #matriz en el archivo
                 if productosSeleccionados["ID"] == element:
-                    id = productosSeleccionados["ID"]
+                    id.append(productosSeleccionados["ID"])
         return id
 
 
