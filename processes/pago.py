@@ -6,9 +6,8 @@ import datetime
 file_path1 = "files/pagos.json"
 
 class Pago:
-    def _init_(self, concepto, monto, metPago, cuenta,id,nombre):
+    def _init_(self, monto, metPago, cuenta,id,nombre):
         self._numOperacion = str(uuid.uuid4())
-        self._concepto = "Pago por compra de producto: " + concepto
         self._fecha = str(
             datetime.datetime.strftime(datetime.datetime.now(), "%d/%m/%Y %H:%M:%S")
         )
