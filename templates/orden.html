@@ -64,8 +64,8 @@
 
 <section class="order" id="order">
 
-    <h3 class="sub-heading"> order now </h3>
-    <h1 class="heading"> free and fast </h1>
+    <h3 class="sub-heading"> Ordenar ya </h3>
+    <h1 class="heading"> Rapido y gratuito </h1>
 
     <form action="/pagar" method="POST">
 
@@ -99,9 +99,9 @@
                 <input type="text" placeholder="Ingrese la fecha de caducidad" name="fecha">
             </div>
         </div>
-        {% if mensaje %}
+        {% if passed %}
             <center>
-            <p style="color: rgb(66, 226, 138); font-size: 13px;" class="let_space">{{mensaje}}</p>
+            <p style="color: rgb(66, 226, 138); font-size: 13px;" class="let_space">{{passed}}</p>
             </center>
         {% endif %}
         {% if mensaje %}
@@ -109,7 +109,7 @@
             <p style="color: rgb(245, 39, 32); font-size: 13px;" class="let_space">{{mensaje}}</p>
             </center>
         {% endif %}
-        <input type="submit" value="order now" class="btn">
+        <input type="submit" value="Ordenar" class="btn">
 
     </form>
 
@@ -257,20 +257,28 @@
 
 <script>
     productoLS = JSON.parse(localStorage.getItem('productos'));
+    ids = JSON.parse(localStorage.getItem('ids'));
     var lista = document.getElementById("lista");
-    var list = "";
-    productoLS.forEach(function (producto){ 
-        texto = `<div class="box">
-                    <div class="image">
-                        <img src="${producto.imagen}" alt="">
-                    </div>
-                    <div class="content">
-                        <h3>${producto.nombre}</h3> <span class="price">s/${producto.precio}</span>
-                    </div>
-                </div>`;
-        list+=texto
-    });
-    lista.innerHTML += list;
+    {% if passed %}
+        lista.innerHTML = `            <center>
+            <h3 style="font-size: 13px;" class="let_space">No tiene productos agregados</h3>
+            </center>`;
+    {% else %}
+        var list = "";
+        productoLS.forEach(function (producto){ 
+            texto = `<div class="box">
+                        <div class="image">
+                            <img src="${producto.imagen}" alt="">
+                        </div>
+                        <div class="content">
+                            <h3>${producto.nombre}</h3> <span class="price">s/${producto.precio}</span>
+                        </div>
+                    </div>`;
+            list+=texto
+        });
+        lista.innerHTML += list;
+    {% endif %}
+
 </script>
 
 </body>
