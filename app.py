@@ -45,6 +45,7 @@ def home():
     return render_template("index.html")
 
 usuarioEnSesion = None  
+carrito = []
 
 @app.route('/login',methods=['POST', 'GET'])
 def iniciar_sesion():
@@ -71,7 +72,6 @@ def mostrar_pagina():
 @app.route('/registrar',methods=['POST', 'GET'])
 def registrar():
     output = request.form.to_dict()
-    print(output)
     user = output["usuario"]
     password = output["contraseña"]
     name = output["nombre"]
@@ -93,6 +93,11 @@ def mostrar_perfil():
     nombre = usuarioEnSesion._nombre
     apellido = usuarioEnSesion._apellido
     return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido)
+
+
+@app.route('/orden',methods=['POST', 'GET'])
+def mostrar_orden():
+    return render_template("orden.html")
 
 if __name__ == "__main__":
     app.run(debug=True)

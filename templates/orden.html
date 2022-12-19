@@ -1,3 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina principal</title>
+
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="static/stylesheet.css">
+
+</head>
+<body>
+    
+<!-- header section starts      -->
+
+<header>
+
+    <a href="/page#home" class="logo"><i class="fas fa-utensils"></i> Coffe peluche</a>
+
+    <nav class="navbar">
+        <a class="active" href="/page#home">home</a>
+        <a href="/page#dishes">populares</a>
+        <a href="/page#about">about us</a>
+        <a href="/page#menu">menu</a>
+    </nav>
+
+    <div class="icons">
+        <i class="fas fa-bars" id="menu-bars"></i>
+        <i class="fas fa-search" id="search-icon"></i>
+        <a id="comprar" href="/orden" class="fas fa-shopping-cart"></a>
+        <a href="/profile" class="fas fa-user"></a>
+    </div>
+
+</header>
+
+<!-- header section ends-->
+
+<!-- menu section starts  -->
+
+<section class="menu">
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1 class="heading"> carrito </h1>
+
+    <div class="box-container">
+        <p id="lista"></p>
+        <div class="box">
+            <div class="image">
+                <img src="static/images/menu-1.png" alt="">
+            </div>
+            <div class="content">
+                <h3>Espresso</h3>
+                <span class="price">$12.99</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="static/images/menu-1.png" alt="">
+            </div>
+            <div class="content">
+                <h3>Espresso</h3>
+                <span class="price">$12.99</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="static/images/menu-1.png" alt="">
+            </div>
+            <div class="content">
+                <h3>Espresso</h3>
+                <span class="price">$12.99</span>
+            </div>
+        </div>
+
+        <div class="box">
+            <div class="image">
+                <img src="static/images/menu-1.png" alt="">
+            </div>
+            <div class="content">
+                <h3>Espresso</h3>
+                <span class="price">$12.99</span>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- menu section ends -->
+
+
+<!-- order section starts  -->
+
 <section class="order" id="order">
 
     <h3 class="sub-heading"> order now </h3>
@@ -51,3 +156,176 @@
     </form>
 
 </section>
+
+<!-- order section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>locations</h3>
+            <a href="#">india</a>
+            <a href="#">japan</a>
+            <a href="#">russia</a>
+            <a href="#">USA</a>
+            <a href="#">france</a>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="#">home</a>
+            <a href="#">dishes</a>
+            <a href="#">about</a>
+            <a href="#">menu</a>
+            <a href="#">reivew</a>
+            <a href="#">order</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <a href="#">+123-456-7890</a>
+            <a href="#">+111-222-3333</a>
+            <a href="#">shaikhanas@gmail.com</a>
+            <a href="#">anasbhai@gmail.com</a>
+            <a href="#">mumbai, india - 400104</a>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#">facebook</a>
+            <a href="#">twitter</a>
+            <a href="#">instagram</a>
+            <a href="#">linkedin</a>
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+    let menu = document.querySelector('#menu-bars');
+    let navbar = document.querySelector('.navbar');
+
+    menu.onclick = () =>{
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+    }
+
+    let section = document.querySelectorAll('section');
+    let navLinks = document.querySelectorAll('header .navbar a');
+
+    window.onscroll = () =>{
+
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+
+    section.forEach(sec =>{
+
+        let top = window.scrollY;
+        let height = sec.offsetHeight;
+        let offset = sec.offsetTop - 150;
+        let id = sec.getAttribute('id');
+
+        if(top >= offset && top < offset + height){
+        navLinks.forEach(links =>{
+            links.classList.remove('active');
+            document.querySelector('header .navbar a[href*='+id+']').classList.add('active');
+        });
+        };
+
+    });
+
+    }
+
+    document.querySelector('#search-icon').onclick = () =>{
+    document.querySelector('#search-form').classList.toggle('active');
+    }
+
+    document.querySelector('#close').onclick = () =>{
+    document.querySelector('#search-form').classList.remove('active');
+    }
+
+    var swiper = new Swiper(".home-slider", {
+    spaceBetween: 30,
+    centeredSlides: true,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    loop:true,
+    });
+
+    var swiper = new Swiper(".review-slider", {
+    spaceBetween: 20,
+    centeredSlides: true,
+    autoplay: {
+        delay: 7500,
+        disableOnInteraction: false,
+    },
+    loop:true,
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+        },
+        640: {
+        slidesPerView: 2,
+        },
+        768: {
+        slidesPerView: 2,
+        },
+        1024: {
+        slidesPerView: 3,
+        },
+    },
+    });
+
+    function loader(){
+    document.querySelector('.loader-container').classList.add('fade-out');
+    }
+
+    function fadeOut(){
+    setInterval(loader, 3000);
+    }
+
+    window.onload = fadeOut;
+</script>
+
+<script>
+    productoLS = JSON.parse(localStorage.getItem('productos'));
+    window.alert(productoLS);
+    var lista = document.getElementById("lista");
+    var list =[];
+    productoLS.forEach(function (producto){
+        window.alert(producto.nombre);
+        list.push(producto.nombre);
+    });
+    lista.innerHTML += list[1]
+    // var list =[]
+    // function leerLocalStorageCompra(){
+    //     productoLS.forEach(function (producto){
+    //         window.alert(producto.nombre)
+    //         list.push[producto.nombre]
+    // //         //     <div class="box">
+    // //         //         <div class="image">
+    // //         //             <img src="${producto.imagen}" alt="">
+    // //         //         </div>
+    // //         //         <div class="content">
+    // //         //             <h3>${producto.nombre}</h3>
+    // //         //             <span class="price">${producto.precio}</span>
+    // //         //         </div>
+    // //         //     </div>
+    // //         // `;
+    //     });
+    // }
+    // lista.innerHTML += list[0]
+</script>
+
+</body>
+</html>
