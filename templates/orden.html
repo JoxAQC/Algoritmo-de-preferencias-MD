@@ -43,7 +43,7 @@
 
 <!-- menu section starts  -->
 
-<section class="menu">
+<section class="menu"  action="/pagar" method="POST">
 
     <br>
     <br>
@@ -257,7 +257,7 @@
 
 <script>
     productoLS = JSON.parse(localStorage.getItem('productos'));
-    ids = JSON.parse(localStorage.getItem('ids'));
+    ids = JSON.parse(localStorage.getItem('ids'));  
     var lista = document.getElementById("lista");
     {% if passed %}
         lista.innerHTML = `            <center>
@@ -271,14 +271,13 @@
                             <img src="${producto.imagen}" alt="">
                         </div>
                         <div class="content">
-                            <h3>${producto.nombre}</h3> <span class="price">s/${producto.precio}</span>
+                            <h3 name = "${producto.id}">${producto.nombre}</h3> <span class="price">s/${producto.precio}</span>
                         </div>
                     </div>`;
             list+=texto
         });
         lista.innerHTML += list;
     {% endif %}
-
 </script>
 
 </body>

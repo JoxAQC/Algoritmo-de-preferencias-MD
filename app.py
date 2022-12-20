@@ -21,8 +21,8 @@ from entities.user import Usuario
 from entities.tarjeta import Tarjeta
 from entities.administrador import Administrador
 from entities.cliente import Cliente
-from entities.paypal import PayPal
 from processes.pago import Pago
+import json
 
 def buscar_usuario(user, password):
     usuarioEnSesion = Usuario.verify_session(user, password)
@@ -92,7 +92,28 @@ def mostrar_perfil():
     correo = usuarioEnSesion._correo
     nombre = usuarioEnSesion._nombre
     apellido = usuarioEnSesion._apellido
-    return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido)
+    try:
+        for element in usuarioEnSesion._pago:        
+            producto = element["Nombre"]
+            fecha = element["Fecha"]
+            txt = """        
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-shopping-cart"></i> Producto: """+producto+"""</li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-clock"></i> Fecha: """+fecha+"""</li>
+                </ul>
+            </div>\n
+
+        """
+            txt += txt
+
+        return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido, producto = producto, fecha = fecha, txt = txt)
+    except(AttributeError):
+       return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido)     
+
+    
 
 
 @app.route('/orden',methods=['POST', 'GET'])
@@ -109,6 +130,7 @@ def pagar():
     apellido = output["apellido"]
     emisor = output["emisor"]
     fecha = output["fecha"]
+    ids = [1, 13, 17, 20]
 
     metPagoIngresado = Tarjeta(tarjeta, fecha, codigo, nombre, apellido, emisor)
 
@@ -117,14 +139,21 @@ def pagar():
     c = metPagoIngresado.verificarCaducidad()
 
     if a and b and c:
-        nuevoPago = Pago("1", "Espresso")
+        with open("files/productos.json", "r") as f:
+            data = json.load(f)
 
-        nuevoPago.registrarTransaccion()
-        pago = nuevoPago.cambiarFormato()
-        nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, pago)
-        nuevo_cliente.registrar()
-        mensaje = "Pago exitoso"
-        return render_template("orden.html", passed = mensaje)
+        for element in ids:
+            for producto in data:
+                if element == producto["ID"]:
+                    nuevoPago = Pago(producto["ID"], producto["Nombre"])
+
+                    nuevoPago.registrarTransaccion()
+                    pago = nuevoPago.cambiarFormato()
+                    nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, pago)
+                    nuevo_cliente.registrar()
+
+        passed = "Pago exitoso"
+        return render_template("orden.html", passed = passed)
     else:
         mensaje = "Compruebe la información de su método de pago e inténtalo de nuevo"
 

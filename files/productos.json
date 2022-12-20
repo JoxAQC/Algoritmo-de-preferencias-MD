@@ -85,63 +85,63 @@
     },
     {
         "Nombre": "Chicha",
-        "ID": 11,
+        "ID": 23,
         "Stock": 10,
         "Precio": 5,
         "Categorias": ["Frío"] 
     },
     {
         "Nombre": "Matcha frappe",
-        "ID": 13,
+        "ID": 11,
         "Stock": 10,
         "Precio": 16,
         "Categorias": ["Bebida", "Frío", "Especial"] 
     },
     {
         "Nombre": "Croissant de pollo",
-        "ID": 14,
+        "ID": 13,
         "Stock": 10,
         "Precio": 10,
         "Categorias": ["Comida", "Clásico", "Sandwich"] 
     },
     {
         "Nombre": "Sandwich pavita y queso",
-        "ID": 15,
+        "ID": 14,
         "Stock": 10,
         "Precio": 12,
         "Categorias": ["Comida", "Integral", "Sandwich"] 
     },
     {
         "Nombre": "Triple",
-        "ID": 16,
+        "ID": 15,
         "Stock": 10,
         "Precio": 8,
         "Categorias": ["Comida", "Clásico","Sandwich"] 
     },
     {
         "Nombre": "Empanada de pollo",
-        "ID": 17,
+        "ID": 16,
         "Stock": 10,
         "Precio": 6,
         "Categorias": ["Comida", "Integral", "Empanada"] 
     },
     {
         "Nombre": "Empanada de carne",
-        "ID": 18,
+        "ID": 17,
         "Stock": 10,
         "Precio": 6,
         "Categorias": ["Comida", "Clásico", "Empanada"] 
     },
     {
         "Nombre": "Empanada de queso",
-        "ID": 19,
+        "ID": 18,
         "Stock": 10,
         "Precio": 6,
         "Categorias": ["Comida", "Integral", "Empanada"] 
     },
     {
         "Nombre": "Empanada mixta",
-        "ID": 20,
+        "ID": 19,
         "Stock": 10,
         "Precio": 6,
         "Categorias": ["Comida", "Clásico", "Empanada"] 
