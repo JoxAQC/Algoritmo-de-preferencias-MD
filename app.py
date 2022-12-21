@@ -34,6 +34,7 @@ user = None
 password = None
 txt = None
 txt2 = None
+tipo = None
 
 @app.route('/login',methods=['POST', 'GET'])
 def iniciar_sesion():
@@ -47,8 +48,8 @@ def iniciar_sesion():
     password = contraseña
 
     global usuarioEnSesion 
-
     usuarioEnSesion, tipo = buscar_usuario(usuario, contraseña)
+
 
     if usuarioEnSesion is None:
         mensaje = "Usuario no registrado, inténtelo nuevamente, por favor"
@@ -64,19 +65,14 @@ def iniciar_sesion():
             ventaComidas = Administrador.calcularVentaComidas()
             porcentajeBebidas = Administrador.calcularPorcentaje(ventaTotal,ventaBebidas)
             porcentajeComidas = Administrador.calcularPorcentaje(ventaTotal,ventaComidas)
-            print("---------REPORTE DE VENTAS-----------")
-            print("--> Venta Total = S/ ",ventaTotal)
-            print("--> Venta Bebidas = S/ ",ventaBebidas)
-            print("--> Venta Comidas = S/ ",ventaComidas)
-            print("--> % Venta Bebidas sobre el Total= "+str(porcentajeBebidas)+"%")
-            print("--> % Venta Comidas sobre el Total= "+str(porcentajeComidas)+"%")
-            ventaBebidaPotencial = Administrador.calcularBebidaPotencial()
-            print("--> Venta Bebida más vendida= S/ ",ventaBebidaPotencial)
-            ventaComidaPotencial = Administrador.calcularComidaPotencial()
-            print("--> Venta Comida más vendida= S/ ",ventaComidaPotencial)
-            return render_template("admin.html")
+            ventaBebidaPotencial, bebida = Administrador.calcularBebidaPotencial()
+            ventaComidaPotencial, comida = Administrador.calcularComidaPotencial()
+            return render_template("admin.html", bebida = bebida, comida = comida, ventaTotal = "S/"+str(ventaTotal), ventaBebidas = "S/"+str(ventaBebidas), ventaComidas = "S/"+str(ventaComidas), porcentajeBebidas = str(round(porcentajeBebidas,2))+"%", porcentajeComidas = str(round(porcentajeComidas,2))+"%", ventaBebidaPotencial = "S/"+str(ventaBebidaPotencial), ventaComidaPotencial = "S/"+str(ventaComidaPotencial))
         return mostrar_pagina()
 
+# @app.route('/page')
+# def mostrar_admin():
+    
    
 @app.route('/page')
 def mostrar_pagina():
@@ -102,6 +98,14 @@ def registrar():
 
     return render_template("index.html", register = register)
 
+@app.route('/adminprofile',methods=['POST', 'GET'])
+def mostrar_perfil_admin():
+    usuario = usuarioEnSesion._usuario
+    correo = usuarioEnSesion._correo
+    nombre = usuarioEnSesion._nombre
+    apellido = usuarioEnSesion._apellido
+    admin = "a"
+    return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido, admin = admin)
 
 @app.route('/profile',methods=['POST', 'GET'])
 def mostrar_perfil():

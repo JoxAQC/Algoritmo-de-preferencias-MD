@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to Style HTML Tables with CSS</title>
-    <link rel="stylesheet" href="static/styleadmin.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="static/stylesheet.css">
+    <title>Reporte</title>
 </head>
 <body>
   <style type="text/css">
@@ -19,11 +21,11 @@
           top: 50%;
           left: 50%;
           transform: translate(-50%,-50%);
-          max-width: 430px;
+          max-width: 800px;
           width: 100%;
           border-collapse: collapse;
           margin: 25px 0;
-          font-size: 0.9em;
+          font-size: 2em;
           min-width: 400px;
           border-radius: 5px 5px 0 0;
           overflow: hidden;
@@ -59,33 +61,61 @@
           color: #009879;
       }
   </style>
+  <header>
+
+    <a href="#" class="logo"><i class="fas fa-utensils"></i> Coffe peluche</a>
+
+    <div class="icons">
+        <a href="/adminprofile" class="fas fa-user"></a>
+        <a href="/" class="fas fa-door-open"></a>
+    </div>
+
+</header>
+  <br><br><br><br><br><br><br><br>  <br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <center>      <h1 style="color: #009879; font-family: sans-serif; font-size: 4em;">Reporte de ventas</h1></center>
   <center>    <table class="content-table">
     <thead>
       <tr>
-        <th>Rank</th>
-        <th>Name</th>
-        <th>Points</th>
-        <th>Team</th>
+        <th>N°</th>
+        <th>Concepto</th>
+        <th>Ganancia</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>1</td>
-        <td>Domenic</td>
-        <td>88,110</td>
-        <td>dcode</td>
-      </tr>
       <tr class="active-row">
+        <td>1</td>
+        <td>Venta Total</td>
+        <td>{{ventaTotal}}</td>
+      </tr>
+      <tr>
         <td>2</td>
-        <td>Sally</td>
-        <td>72,400</td>
-        <td>Students</td>
+        <td>Venta Bebidas</td>
+        <td>{{ventaBebidas}}</td>
       </tr>
       <tr>
         <td>3</td>
-        <td>Nick</td>
-        <td>52,300</td>
-        <td>dcode</td>
+        <td>Venta Comidas</td>
+        <td>{{ventaComidas}}</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>% Venta Bebidas sobre el Total</td>
+        <td>{{porcentajeBebidas}}</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>% Venta Comidas sobre el Total</td>
+        <td>{{porcentajeComidas}}</td>
+      </tr>
+      <tr class="active-row">
+        <td>6</td>
+        <td>Venta Bebida más vendida: {{bebida}}</td>
+        <td>{{ventaBebidaPotencial}}</td>
+      </tr>
+      <tr class="active-row">
+        <td>7</td>
+        <td>Venta Comida más vendida: {{comida}}</td>
+        <td>{{ventaComidaPotencial}}</td>
       </tr>
     </tbody>
   </table></center>

@@ -126,13 +126,13 @@
         .seccion-perfil-usuario .perfil-usuario-body {
             width: 70%;
             position: relative;
-            max-width: 750px;
+            max-width: 1000px;
         }
         
         .seccion-perfil-usuario .perfil-usuario-body .titulo {
             display: block;
             width: 100%;
-            font-size: 1.75em;
+            font-size: 3em;
             margin-bottom: 0.5rem;
         }
         
@@ -158,7 +158,7 @@
         }
         
         .seccion-perfil-usuario .lista-datos {
-            font-size: 1.5rem;
+            font-size: 2rem;
             width: 50%;
             list-style: none;
         }
@@ -169,7 +169,7 @@
         
         .seccion-perfil-usuario .lista-datos li>.icono {
             margin-right: 1rem;
-            font-size: 1.5rem;
+            font-size: 2rem;
             vertical-align: middle;
         }
         
@@ -243,7 +243,18 @@
         </style>
     
 <!-- header section starts      -->
+{% if admin %}
+    <header>
 
+        <a href="/admin" class="logo"><i class="fas fa-utensils"></i> Coffe peluche</a>
+
+        <div class="icons">
+            <a href="/adminprofile" class="fas fa-user"></a>
+            <a href="/" class="fas fa-door-open"></a>
+        </div>
+
+    </header>
+{% else %}
 <header>
 
     <a href="/page#home" class="logo"><i class="fas fa-utensils"></i> Coffe peluche</a>
@@ -263,6 +274,7 @@
     </div>
 
 </header>
+{% endif %}
 <br>
 <br>
 <br>

@@ -26,10 +26,10 @@ class Administrador(Usuario):
                 element["contrasenia"], given_Password
             ):
                 print("Bienvenido, " + element["nombre"])
-                llave = input("Ingrese su llame maestra para continuar: ")
-                while check_password_hash(element["llave_maestra"], llave) == False:
-                    print("Llave maestra incorrecta, intentelo nuevamente, por favor")
-                    llave = input("Ingrese su llame maestra para continuar: ")
+                # llave = input("Ingrese su llame maestra para continuar: ")
+                # while check_password_hash(element["llave_maestra"], llave) == False:
+                #     print("Llave maestra incorrecta, intentelo nuevamente, por favor")
+                #     llave = input("Ingrese su llame maestra para continuar: ")
                 return Administrador(
                     element["usuario"],
                     element["contrasenia"],
@@ -108,8 +108,7 @@ class Administrador(Usuario):
             if element["ID"]==bebidaPotencial:
                 bebida = element["Nombre"]
                 precio = element["Precio"]
-        print("--> La bebida más vendida fue: "+str(bebida))
-        return precio*cantPotencial
+        return precio*cantPotencial, str(bebida)
 
     def calcularComidaPotencial():
         arregloTotal=[]
@@ -132,8 +131,7 @@ class Administrador(Usuario):
             if element["ID"]==comidaPotencial:
                 comida = element["Nombre"]
                 precio = element["Precio"]
-        print("--> La comida más vendida fue: "+str(comida))
-        return precio*cantPotencial
+        return precio*cantPotencial, str(comida)
     
 
 
