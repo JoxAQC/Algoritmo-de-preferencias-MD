@@ -58,8 +58,26 @@ def iniciar_sesion():
         txt2 = None
         return render_template("index.html", mensaje = mensaje)
     else:
+        if tipo == "admin":
+            ventaTotal = Administrador.calcularVentaTotal()
+            ventaBebidas = Administrador.calcularVentaBebidas()
+            ventaComidas = Administrador.calcularVentaComidas()
+            porcentajeBebidas = Administrador.calcularPorcentaje(ventaTotal,ventaBebidas)
+            porcentajeComidas = Administrador.calcularPorcentaje(ventaTotal,ventaComidas)
+            print("---------REPORTE DE VENTAS-----------")
+            print("--> Venta Total = S/ ",ventaTotal)
+            print("--> Venta Bebidas = S/ ",ventaBebidas)
+            print("--> Venta Comidas = S/ ",ventaComidas)
+            print("--> % Venta Bebidas sobre el Total= "+str(porcentajeBebidas)+"%")
+            print("--> % Venta Comidas sobre el Total= "+str(porcentajeComidas)+"%")
+            ventaBebidaPotencial = Administrador.calcularBebidaPotencial()
+            print("--> Venta Bebida más vendida= S/ ",ventaBebidaPotencial)
+            ventaComidaPotencial = Administrador.calcularComidaPotencial()
+            print("--> Venta Comida más vendida= S/ ",ventaComidaPotencial)
+            return render_template("admin.html")
         return mostrar_pagina()
-    
+
+   
 @app.route('/page')
 def mostrar_pagina():
     if txt != None and txt2 != None:

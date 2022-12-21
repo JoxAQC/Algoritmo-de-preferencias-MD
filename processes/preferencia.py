@@ -17,10 +17,10 @@ class Preferencia:
         for element in productos:
             for elemento in arreglo:
                 if element["ID"] == elemento:
-                    califica=int(input("Ingrese la calificacion del 1-10 de "+str(element["Nombre"])+":"))
+                    califica=5
                     while califica<1 or califica>10:
                         print("Calificacion invalida. Ingrese nuevamente.")
-                        califica=int(input("Ingrese la calificacion del 1-10 de "+str(element["Nombre"])+":"))
+                        califica=5
                     calificaciones.append(califica)
         return calificaciones
 

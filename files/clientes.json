@@ -47,5 +47,34 @@
                 "Fecha": "21/12/2022 13:31:00"
             }
         ]
+    },
+    {
+        "usuario": "Ghopst",
+        "contrasenia": "pbkdf2:sha256:260000$8LZGTQw6QWuzzegf$da5a9f7ec6808aa88105f89a947614e88f4e2a2cc6278051cfea237f2d783ef5",
+        "nombre": "Gianfranco",
+        "apellido": "Ore",
+        "correo": "gianfranco.ore@gmail.com",
+        "pago": [
+            {
+                "ID": 1,
+                "Nombre": "Espresso",
+                "Fecha": "21/12/2022 13:40:36"
+            },
+            {
+                "ID": 6,
+                "Nombre": "Cafe frappe",
+                "Fecha": "21/12/2022 13:40:36"
+            },
+            {
+                "ID": 11,
+                "Nombre": "Matcha frappe",
+                "Fecha": "21/12/2022 13:40:36"
+            },
+            {
+                "ID": 18,
+                "Nombre": "Empanada de queso",
+                "Fecha": "21/12/2022 13:40:36"
+            }
+        ]
     }
 ]

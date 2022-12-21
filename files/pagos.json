@@ -38,5 +38,25 @@
         "ID": 19,
         "Nombre": "Empanada mixta",
         "Fecha": "21/12/2022 13:31:00"
+    },
+    {
+        "ID": 1,
+        "Nombre": "Espresso",
+        "Fecha": "21/12/2022 13:40:36"
+    },
+    {
+        "ID": 6,
+        "Nombre": "Cafe frappe",
+        "Fecha": "21/12/2022 13:40:36"
+    },
+    {
+        "ID": 11,
+        "Nombre": "Matcha frappe",
+        "Fecha": "21/12/2022 13:40:36"
+    },
+    {
+        "ID": 18,
+        "Nombre": "Empanada de queso",
+        "Fecha": "21/12/2022 13:40:36"
     }
 ]
