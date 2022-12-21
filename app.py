@@ -92,24 +92,15 @@ def mostrar_perfil():
     correo = usuarioEnSesion._correo
     nombre = usuarioEnSesion._nombre
     apellido = usuarioEnSesion._apellido
+    texto_final = ""
     try:
-        for element in usuarioEnSesion._pago:        
-            producto = element["Nombre"]
-            fecha = element["Fecha"]
-            txt = """        
-            <div class="perfil-usuario-footer">
-                <ul class="lista-datos">
-                    <li><i class="icono fas fa-shopping-cart"></i> Producto: """+producto+"""</li>
-                </ul>
-                <ul class="lista-datos">
-                    <li><i class="icono fas fa-clock"></i> Fecha: """+fecha+"""</li>
-                </ul>
-            </div>\n
+        for element in usuarioEnSesion._pago:         
+            txt= element["Nombre"]+element["Fecha"]+"\n\n"
+            texto_final += txt
 
-        """
-            txt += txt
+        print (texto_final)
 
-        return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido, producto = producto, fecha = fecha, txt = txt)
+        return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido, txt = texto_final)
     except(AttributeError):
        return render_template("user.html", usuario = usuario, correo = correo, nombre = nombre, apellido = apellido)     
 

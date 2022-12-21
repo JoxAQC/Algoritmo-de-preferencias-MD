@@ -297,18 +297,32 @@
             </ul>
         </div>
     </div>
+    <br>
+    <br>
+    <div class="perfil-usuario-body" id="historial">
+    </div>
+</section>
+
+<script> 
+    var lista = document.getElementById("historial");
     {% if txt %}
-    <br>
-    <br>
-    <div class="perfil-usuario-body">
+        texto = `
         <div class="perfil-usuario-bio">
             <h3 class="titulo">Historial</h3>
         </div>
-        {{txt}}
-    </div>
+        `;
+        texto2 = `            
+        <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><center><i class="icono fas fa-shopping-cart"></i> Producto</center></li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><center><i class="icono fas fa-clock"></i> Fecha</center></li>
+                </ul>
+            </div>`;
+        lista.innerHTML += texto + texto2 + `{{txt}}`;
     {% endif %}
-</section>
-
+</script>
 <!-- loader part  -->
 <!-- <div class="loader-container">
     <img src="static/images/loader.gif" alt="">
