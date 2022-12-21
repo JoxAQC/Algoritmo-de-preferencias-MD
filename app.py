@@ -5,6 +5,8 @@ from entities.cliente import Cliente
 from processes.pago import Pago
 from processes.preferencia import Preferencia
 import json
+from bs4 import BeautifulSoup
+import requests
 
 def buscar_usuario(user, password):
     usuarioEnSesion = Usuario.verify_session(user, password)
@@ -30,6 +32,8 @@ usuarioEnSesion = None
 carrito = []
 user = None
 password = None
+txt = None
+txt2 = None
 
 @app.route('/login',methods=['POST', 'GET'])
 def iniciar_sesion():
@@ -48,13 +52,20 @@ def iniciar_sesion():
 
     if usuarioEnSesion is None:
         mensaje = "Usuario no registrado, inténtelo nuevamente, por favor"
+        global txt
+        txt = None
+        global txt2
+        txt2 = None
         return render_template("index.html", mensaje = mensaje)
     else:
         return mostrar_pagina()
     
 @app.route('/page')
 def mostrar_pagina():
-    return render_template("page.html")
+    if txt != None and txt2 != None:
+        return render_template("page.html", txt = txt, txt2 = txt2)
+    else:
+        return render_template("page.html")
     
 
 @app.route('/registrar',methods=['POST', 'GET'])
@@ -110,7 +121,12 @@ def pagar():
     apellido = output["apellido"]
     emisor = output["emisor"]
     fecha = output["fecha"]
-    ids = [1, 13, 17, 20]
+    id = output["ids"].split(",")
+    ids = []
+    for element in id:
+        a = int(element)
+        ids.append(a)
+    print(ids)
 
     metPagoIngresado = Tarjeta(tarjeta, fecha, codigo, nombre, apellido, emisor)
 
@@ -141,15 +157,17 @@ def pagar():
         if(len(arregloBebidas)>= 1):
             calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
             recomendacionesBebidas = Preferencia.calcularRecomendaciones(ids,tipo1,calificaBebidas)
-            print("Le recomendamos las sgtes. "+tipo1+"s: ")
+            global txt
+            txt = ""
             for element in recomendacionesBebidas:
-                print("--> "+element," ")
+                txt+=element+" "
         if(len(arregloComidas)>= 1):
             calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
             recomendacionesComidas = Preferencia.calcularRecomendaciones(ids,tipo2,calificaComidas)
-            print("Le recomendamos las sgtes. "+tipo2+"s: ")
+            global txt2
+            txt2 = ""
             for element in recomendacionesComidas:
-                print("--> "+element," ")
+                txt2+=element+" "
         return render_template("orden.html", passed = passed)
     else:
         mensaje = "Compruebe la información de su método de pago e inténtalo de nuevo"

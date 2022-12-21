@@ -1,22 +1,29 @@
-import json
-from entities.cliente import Cliente
-usuarioEnSesion = Cliente.verify_session("JoxSam35", "xdalgo2023")
-texto_final = ""
-for element in usuarioEnSesion._pago:         
-    txt= """
-    <div class="perfil-usuario-footer">\n
-        <ul class="lista-datos">\n
-            <li><i class="icono fas fa-shopping-cart"></i> Producto: """+element["Nombre"]+"""</li>\n
-        </ul>\n
-        <ul class="lista-datos">\n
-            <li><i class="icono fas fa-clock"></i> Fecha: """+element["Fecha"]+"""</li>\n
-        </ul>\n
-    </div>\n
+# import json
+# from entities.cliente import Cliente
+# usuarioEnSesion = Cliente.verify_session("JoxSam35", "xdalgo2023")
+# texto_final = ""
+# for element in usuarioEnSesion._pago:         
+#     txt= """
+#     <div class="perfil-usuario-footer">\n
+#         <ul class="lista-datos">\n
+#             <li><i class="icono fas fa-shopping-cart"></i> Producto: """+element["Nombre"]+"""</li>\n
+#         </ul>\n
+#         <ul class="lista-datos">\n
+#             <li><i class="icono fas fa-clock"></i> Fecha: """+element["Fecha"]+"""</li>\n
+#         </ul>\n
+#     </div>\n
 
-    """
-    texto_final += txt
+#     """
+#     texto_final += txt
 
-print (texto_final)
+# print (texto_final)
+a = "1,5,7,8,9"
+id = a.split(",")
+ids = []
+for element in id:
+    a = int(element)
+    ids.append(a)
+print(ids)
 
 
 # import json

@@ -99,6 +99,12 @@
                 <input type="text" placeholder="Ingrese la fecha de caducidad" name="fecha">
             </div>
         </div>
+        <div class="inputBox">
+            <div class="input">
+                <span>IDS</span>
+                <input type="text" placeholder="Ingrese los ID de los productos" name="ids">
+            </div>
+        </div>
         {% if passed %}
             <center>
             <p style="color: rgb(66, 226, 138); font-size: 13px;" class="let_space">{{passed}}</p>
@@ -271,12 +277,18 @@
                             <img src="${producto.imagen}" alt="">
                         </div>
                         <div class="content">
-                            <h3 name = "${producto.id}">${producto.nombre}</h3> <span class="price">s/${producto.precio}</span>
+                            <h3>${producto.nombre}</h3> <h3 id = "id">ID: ${producto.id}</h3> <span class="price">s/${producto.precio}</span>
                         </div>
                     </div>`;
             list+=texto
         });
         lista.innerHTML += list;
+    {% endif %}
+    {% if txt %}
+        window.alert("{{txt}}")
+    {% endif %}
+    {% if txt2 %}
+        window.alert("{{txt2}}")
     {% endif %}
 </script>
 
