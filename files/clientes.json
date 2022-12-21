@@ -16,6 +16,36 @@
                     "Metodo de pago": "Tarjeta",
                     "Cuenta": 5102575553380988
                 }
+            },
+            {
+                "ID": 1,
+                "Nombre": "Espresso",
+                "Fecha": "21/12/2022 00:00:51"
+            },
+            {
+                "ID": 1,
+                "Nombre": "Espresso",
+                "Fecha": "21/12/2022 00:10:18"
+            },
+            {
+                "ID": 13,
+                "Nombre": "Croissant de pollo",
+                "Fecha": "21/12/2022 00:38:36"
+            },
+            {
+                "ID": 1,
+                "Nombre": "Espresso",
+                "Fecha": "21/12/2022 00:46:29"
+            },
+            {
+                "ID": 1,
+                "Nombre": "Espresso",
+                "Fecha": "21/12/2022 00:49:03"
+            },
+            {
+                "ID": 6,
+                "Nombre": "Cafe frappe",
+                "Fecha": "21/12/2022 00:50:30"
             }
         ]
     }

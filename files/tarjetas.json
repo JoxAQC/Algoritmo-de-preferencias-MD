@@ -33,7 +33,7 @@
         "codSeguridad": "pbkdf2:sha256:260000$n6milTDPcHap5YBV$bffdbc78a4d9b87df89210dd4d3c15a2a24a4ef8d55adee3e0c746cf0f27789b",
         "nombTarjeta": "Jatziry",
         "apellTarjeta": "Wong",
-        "monto": 488
+        "monto": 468
     },
     {
         "emisor": "MasterCard",
