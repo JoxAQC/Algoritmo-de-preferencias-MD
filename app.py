@@ -1,22 +1,3 @@
-# from flask import Flask, render_template, url_for, request
-
-# app = Flask(__name__)
-
-# @app.route('/')
-# @app.route('/home')
-# def home():
-#     return render_template("index.html")
-
-# @app.route('/result',methods=['POST', 'GET'])
-# def result():
-#     output = request.form.to_dict()
-#     print(output)
-#     name = output["name"]
-
-#     return render_template('index.html', name = name)
-
-# if __name__ == "__main__":
-#     app.run(debug=True)
 from entities.user import Usuario
 from entities.tarjeta import Tarjeta
 from entities.administrador import Administrador
@@ -95,7 +76,7 @@ def mostrar_perfil():
     texto_final = ""
     try:
         for element in usuarioEnSesion._pago:         
-            txt= element["Nombre"]+element["Fecha"]+"\n\n"
+            txt= "-------------------------------------------"+element["Nombre"]+"--------------------------------------------------------------------"+element["Fecha"]+"-------------------------"
             texto_final += txt
 
         print (texto_final)
