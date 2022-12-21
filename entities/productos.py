@@ -21,35 +21,14 @@ class Producto:
                 print("Id: " + str(element["ID"]))
                 print("Precio: " + str(element["Precio"]))
                 print("------------------------------------------------------")
-            #if tipo == "admin":
-            #    if element["estado"] == "No disponible":
-            #        print("------------------------------------------------------")
-            #        print("DATOS DE LA HABITACION " + str(element["numHabitacion"]))
-            #        print("Estado:" + element["estado"])
-            #        print("Precio:" + str(element["precio"]))
-            #        print("Tipo de la habitacion:" + element["tipoHabitacion"])
-            #        print("Numero de la habitacion:" + str(element["numHabitacion"]))
-            #        print("------------------------------------------------------")
-  
-    #def guardarBD(self,productosSeleccionados):
-    #    with open(file_path2, "r") as f:
-    #        guardar = json.load(f)
-    #    for element in guardar:
-    #        for i in productosSeleccionados:
-    #            if element["ID"] == i:
-    #                nombre = element["Nombre"]
-    #                precio = element["Precio"]
-    #                id = element["ID"]
-    #    RegistrarDatos = dict(id, nombre, precio, fecha=self._fecha)
-    #    return RegistrarDatos
 
-    #def registrarDatos(self):
-    #    RegistrarD = self.guardarBD()    
-    #    with open(file_path, "r") as f:
+    def cambiarStock(numPedidos):
+        for pedido in numPedidos:
+            with open(file_path, "r") as f:
+                data = json.load(f)
+            for element in data:
+                if element["ID"] == pedido:
+                    element["Stock"] =  element["Stock"]-1
 
-    #        guardar = json.load(f)
-
-    #   guardar.append(RegistrarD)
-
-    #    with open(file_path2, "w") as f:
-    #        json.dump(guardar,f ,indent=4)
+            with open(file_path, "w") as f:
+                json.dump(data, f, indent=4)

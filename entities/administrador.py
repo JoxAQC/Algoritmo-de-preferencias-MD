@@ -1,6 +1,6 @@
 from entities.user import Usuario
 import json
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import check_password_hash
 import pandas as pd 
 from processes.preferencia import Preferencia              
 import numpy
@@ -9,7 +9,8 @@ file_path = "files/adminDatos.json"
 file_path1 = "files/pedidos.json"
 file_path2 = "files/productos.json"
 file_path3 = "files/bebidas.json"
-file_path4 = "files/comidas.json"
+file_path5 = "files/comidas.json"
+file_path4 = "files/pagos.json"
 
 class Administrador(Usuario):
     def __init__(self, usuario, contrasenia, nombre, apellido, correo, llaveMaestra):
@@ -40,10 +41,14 @@ class Administrador(Usuario):
 
     def calcularVentaTotal():
         venta = 0
-        with open(file_path1, "r") as f:
-            pedidos = json.load(f)
-        for element in pedidos:
-            venta+=element["monto"]
+        with open(file_path4, "r") as f:
+            pagos = json.load(f)
+        for element in pagos:
+            with open(file_path2, "r") as f:
+                productos = json.load(f)
+            for producto in productos:
+                if element["ID"]==producto["ID"]:
+                    venta = venta + producto["Precio"]    
         return venta
 
     def calcularVentaBebidas():
@@ -51,33 +56,31 @@ class Administrador(Usuario):
         with open(file_path3, "r") as f:
             bebidas = json.load(f)
         for bebida in bebidas:   
-            with open(file_path1, "r") as f:
-                pedidos = json.load(f)
-            for element in pedidos:
-                for id in element["numPedidos"]:
-                    if id == bebida:
+            with open(file_path4, "r") as f:
+                pagos = json.load(f)
+            for element in pagos:
+                    if element["ID"] == bebida:
                         with open(file_path2, "r") as f:
                             productos = json.load(f)
                         for producto in productos:
-                                if producto["ID"] == id:
-                                    venta += producto["Precio"]
+                            if producto["ID"] == element["ID"]:
+                                venta += producto["Precio"]
         return venta
 
     def calcularVentaComidas():
         venta = 0
-        with open(file_path4, "r") as f:
+        with open(file_path5, "r") as f:
             comidas = json.load(f)
         for comida in comidas:   
-            with open(file_path1, "r") as f:
-                pedidos = json.load(f)
-            for element in pedidos:
-                for id in element["numPedidos"]:
-                    if id == comida:
+            with open(file_path4, "r") as f:
+                pagos = json.load(f)
+            for element in pagos:
+                    if element["ID"] == comida:
                         with open(file_path2, "r") as f:
                             productos = json.load(f)
                         for producto in productos:
-                                if producto["ID"] == id:
-                                    venta += producto["Precio"]
+                            if producto["ID"] == element["ID"]:
+                                venta += producto["Precio"]
         return venta
 
     def calcularPorcentaje(total,subtotal):
@@ -86,11 +89,10 @@ class Administrador(Usuario):
 
     def calcularBebidaPotencial():
         arregloTotal=[]
-        with open(file_path1, "r") as f:
-            pedidos = json.load(f)
-        for element in pedidos:
-            for lista in element["numPedidos"]:
-                arregloTotal.append(lista)
+        with open(file_path4, "r") as f:
+            pagos = json.load(f)
+        for element in pagos:
+            arregloTotal.append(element["ID"])
         tipo = "bebida"
         listaBebidas = Preferencia.clasificarProductos(arregloTotal,tipo)
         lista = pd.Series(listaBebidas) 
@@ -111,19 +113,18 @@ class Administrador(Usuario):
 
     def calcularComidaPotencial():
         arregloTotal=[]
-        with open(file_path1, "r") as f:
-            pedidos = json.load(f)  
-        for element in pedidos:
-            for lista in element["numPedidos"]:
-                arregloTotal.append(lista)
+        with open(file_path4, "r") as f:
+            pagos = json.load(f)
+        for element in pagos:
+            arregloTotal.append(element["ID"])
         tipo = "comida"
-        listaComida = Preferencia.clasificarProductos(arregloTotal,tipo)
-        lista = pd.Series(listaComida) 
+        listaComidas = Preferencia.clasificarProductos(arregloTotal,tipo)
+        lista = pd.Series(listaComidas) 
         resultados = pd.Series(lista.value_counts())
         arreglo = numpy.array(resultados)
         cantPotencial = arreglo[0]
-        for element in listaComida:
-            if listaComida.count(element) == cantPotencial:
+        for element in listaComidas:
+            if listaComidas.count(element) == cantPotencial:
                 comidaPotencial = element
         with open(file_path2, "r") as f:
             productos = json.load(f)
@@ -133,3 +134,7 @@ class Administrador(Usuario):
                 precio = element["Precio"]
         print("--> La comida más vendida fue: "+str(comida))
         return precio*cantPotencial
+    
+
+
+

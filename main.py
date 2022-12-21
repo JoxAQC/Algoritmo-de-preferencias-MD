@@ -10,12 +10,16 @@ from processes.preferencia import Preferencia
 from entities.Registro import Registro
 
 def menu():
-    menu = """
+    print("""
     ---------BIENVENIDOS AL CAFE PELUCHE STAR----------
     1.- Iniciar Sesion
-    2.- Registrarse
-    Elija una opcion: """
-    option = int(input(menu))
+    2.- Registrarse""")
+     
+    option = int(input("Elija una opcion:"))
+    while (option<1) or (option>2):
+        print("Opcion no valida")
+        option = int(input("Elija una opcion:"))
+
     if option == 1:
         usuarioEnSesion, tipo = buscar_usuario()
         while usuarioEnSesion == None:
@@ -35,8 +39,7 @@ def menu():
         new_User = Usuario(user, password, name, lastname, mail)
         new_User.registrar()
 
-    else:
-        print("Opcion no valida")
+    
 
 
 def buscar_usuario():
@@ -96,11 +99,14 @@ def menu_usuarios(usuarioEnSesion):
         Producto.mostrarProducto()
         #Se selecciona el pedido
         CantidadPedir = int(input("Cantidad de productos a pedir: "))
+        while (CantidadPedir<1) or (CantidadPedir>100):
+            print("El minimo de productos a pedir es 1 y el max. 100.Ingrese nuevamente.")
+            CantidadPedir = int(input("Cantidad de productos a pedir: "))
         numPedidos = Carrito.pedirProductos(CantidadPedir)
         Monto = Carrito.calcularMonto(numPedidos)
         print("MONTO A PAGAR = " + str(Monto))
         new_Pedido = Registro(numPedidos,Monto)
-        new_Pedido.registrar()
+        
         
 
         menuPago = """
@@ -148,31 +154,36 @@ def menu_usuarios(usuarioEnSesion):
 
         if a and b and c:
          
-            nuevoPago = Pago(numPedidos, Monto, metPago, cuenta)
+                    for element in numPedidos:
+                        idd = element
+                        nombreProd = Carrito.nombreProducto(element)
+                        nuevoPago = Pago(idd,nombreProd)
+                        nuevoPago.registrarTransaccion()
+                        pago = nuevoPago.cambiarFormato()
+                        nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
 
-            if nuevoPago.pagar():
-                nuevoPago.registrarTransaccion()
-                print("Pago exitoso")
-                pago = nuevoPago.cambiarFormato()
-                nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
-                nuevo_cliente.registrar()
+                    print("Pago exitoso")
+                    new_Pedido.registrar()
+                    Producto.cambiarStock(numPedidos)
+                    pago = nuevoPago.cambiarFormato()
+                    nuevo_cliente.registrar()
 
-                tipo1 = "bebida"
-                tipo2 = "comida"
-                arregloBebidas = Preferencia.clasificarProductos(numPedidos,tipo1)
-                arregloComidas = Preferencia.clasificarProductos(numPedidos,tipo2)
-                if(len(arregloBebidas)>= 1):
-                    calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
-                    recomendacionesBebidas = Preferencia.calcularRecomendaciones(numPedidos,tipo1,calificaBebidas)
-                    print("Le recomendamos las sgtes. "+tipo1+"s: ")
-                    for element in recomendacionesBebidas:
-                        print("--> "+element," ")
-                if(len(arregloComidas)>= 1):
-                    calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
-                    recomendacionesComidas = Preferencia.calcularRecomendaciones(numPedidos,tipo2,calificaComidas)
-                    print("Le recomendamos las sgtes. "+tipo2+"s: ")
-                    for element in recomendacionesComidas:
-                        print("--> "+element," ")
+                    tipo1 = "bebida"
+                    tipo2 = "comida"
+                    arregloBebidas = Preferencia.clasificarProductos(numPedidos,tipo1)
+                    arregloComidas = Preferencia.clasificarProductos(numPedidos,tipo2)
+                    if(len(arregloBebidas)>= 1):
+                        calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
+                        recomendacionesBebidas = Preferencia.calcularRecomendaciones(numPedidos,tipo1,calificaBebidas)
+                        print("Le recomendamos las sgtes. "+tipo1+"s: ")
+                        for element in recomendacionesBebidas:
+                            print("--> "+element," ")
+                    if(len(arregloComidas)>= 1):
+                        calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
+                        recomendacionesComidas = Preferencia.calcularRecomendaciones(numPedidos,tipo2,calificaComidas)
+                        print("Le recomendamos las sgtes. "+tipo2+"s: ")
+                        for element in recomendacionesComidas:
+                            print("--> "+element," ")
 
         else:
             print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")

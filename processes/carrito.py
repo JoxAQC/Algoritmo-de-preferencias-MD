@@ -15,7 +15,10 @@ class Carrito:
     def pedirProductos(cantidadSeleccionada):
         productosSeleccionados = []
         for i in range(cantidadSeleccionada):
-            productosSeleccionados.append(int(input("Ingrese el id del "+ str(i + 1)+ " producto a pedir:")))
+            pedir1 = int(input("Ingrese el id del "+ str(i + 1)+ " producto a pedir:"))
+            while (pedir1<1) or (pedir1>23):
+                pedir1 = int(input("Ingrese el id del "+ str(i + 1)+ " producto a pedir:"))
+            productosSeleccionados.append(pedir1)
         return productosSeleccionados
 
     def calcularMonto(productosSeleccionados):
@@ -37,6 +40,15 @@ class Carrito:
                 if productosSeleccionados["ID"] == element:
                     nombre.append(productosSeleccionados["Nombre"])
         return nombre
+
+    def nombreProducto(producto):
+        with open(file_path, "r") as f: #abrie el json productos
+            data = json.load(f)
+        for productosSeleccionados in data: #matriz en el archivo
+            if productosSeleccionados["ID"] == producto:
+                nombre=productosSeleccionados["Nombre"]
+        return nombre
+    
     
     def preciopd(productosSeleccionados):
         precio = []
