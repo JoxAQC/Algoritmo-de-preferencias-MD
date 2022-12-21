@@ -3,6 +3,7 @@ from entities.tarjeta import Tarjeta
 from entities.administrador import Administrador
 from entities.cliente import Cliente
 from processes.pago import Pago
+from processes.preferencia import Preferencia
 import json
 
 def buscar_usuario(user, password):
@@ -27,13 +28,19 @@ def home():
 
 usuarioEnSesion = None  
 carrito = []
+user = None
+password = None
 
 @app.route('/login',methods=['POST', 'GET'])
 def iniciar_sesion():
     output = request.form.to_dict()
     print(output)
+    global user
     usuario = output["usuario"]
+    user = usuario
+    global password
     contraseña = output["contraseña"]
+    password = contraseña
 
     global usuarioEnSesion 
 
@@ -69,6 +76,7 @@ def registrar():
 
 @app.route('/profile',methods=['POST', 'GET'])
 def mostrar_perfil():
+    usuarioEnSesion = Cliente.verify_session(user, password)
     usuario = usuarioEnSesion._usuario
     correo = usuarioEnSesion._correo
     nombre = usuarioEnSesion._nombre
@@ -125,6 +133,23 @@ def pagar():
                     nuevo_cliente.registrar()
 
         passed = "Pago exitoso"
+
+        tipo1 = "bebida"
+        tipo2 = "comida"
+        arregloBebidas = Preferencia.clasificarProductos(ids,tipo1)
+        arregloComidas = Preferencia.clasificarProductos(ids,tipo2)
+        if(len(arregloBebidas)>= 1):
+            calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
+            recomendacionesBebidas = Preferencia.calcularRecomendaciones(ids,tipo1,calificaBebidas)
+            print("Le recomendamos las sgtes. "+tipo1+"s: ")
+            for element in recomendacionesBebidas:
+                print("--> "+element," ")
+        if(len(arregloComidas)>= 1):
+            calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
+            recomendacionesComidas = Preferencia.calcularRecomendaciones(ids,tipo2,calificaComidas)
+            print("Le recomendamos las sgtes. "+tipo2+"s: ")
+            for element in recomendacionesComidas:
+                print("--> "+element," ")
         return render_template("orden.html", passed = passed)
     else:
         mensaje = "Compruebe la información de su método de pago e inténtalo de nuevo"
