@@ -24,7 +24,7 @@
     {
         "Nombre": "Latte",
         "ID": 3,
-        "Stock": 9,
+        "Stock": 8,
         "Precio": 8,
         "Categorias": [
             "Bebida",
@@ -112,7 +112,7 @@
     {
         "Nombre": "Limonada",
         "ID": 9,
-        "Stock": 9,
+        "Stock": 8,
         "Precio": 5,
         "Categorias": [
             "Bebida",
@@ -134,7 +134,7 @@
     {
         "Nombre": "Chicha",
         "ID": 23,
-        "Stock": 9,
+        "Stock": 8,
         "Precio": 5,
         "Categorias": [
             "Fr\u00c3\u00ado"

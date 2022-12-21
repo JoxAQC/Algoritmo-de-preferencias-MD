@@ -173,14 +173,12 @@ def menu_usuarios(usuarioEnSesion):
                     arregloBebidas = Preferencia.clasificarProductos(numPedidos,tipo1)
                     arregloComidas = Preferencia.clasificarProductos(numPedidos,tipo2)
                     if(len(arregloBebidas)>= 1):
-                        calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
-                        recomendacionesBebidas = Preferencia.calcularRecomendaciones(numPedidos,tipo1,calificaBebidas)
+                        recomendacionesBebidas = Preferencia.calcularRecomendaciones(numPedidos,tipo1)
                         print("Le recomendamos las sgtes. "+tipo1+"s: ")
                         for element in recomendacionesBebidas:
                             print("--> "+element," ")
                     if(len(arregloComidas)>= 1):
-                        calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
-                        recomendacionesComidas = Preferencia.calcularRecomendaciones(numPedidos,tipo2,calificaComidas)
+                        recomendacionesComidas = Preferencia.calcularRecomendaciones(numPedidos,tipo2)
                         print("Le recomendamos las sgtes. "+tipo2+"s: ")
                         for element in recomendacionesComidas:
                             print("--> "+element," ")

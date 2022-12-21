@@ -63,5 +63,20 @@
         "ID": 6,
         "Nombre": "Cafe frappe",
         "Fecha": "21/12/2022 00:50:30"
+    },
+    {
+        "ID": 9,
+        "Nombre": "Limonada",
+        "Fecha": "21/12/2022 14:24:42"
+    },
+    {
+        "ID": 3,
+        "Nombre": "Latte",
+        "Fecha": "21/12/2022 14:24:42"
+    },
+    {
+        "ID": 23,
+        "Nombre": "Chicha",
+        "Fecha": "21/12/2022 14:24:42"
     }
 ]

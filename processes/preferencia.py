@@ -8,21 +8,6 @@ file_path11 = "files/bebidasTabla.json"
 file_path22 = "files/comidasTabla.json"
 
 class Preferencia:
-    def solicitarCalificaciones(arreglo):
-        calificaciones = []
-
-        with open(file_path, "r") as f:
-            productos = json.load(f)
-
-        for element in productos:
-            for elemento in arreglo:
-                if element["ID"] == elemento:
-                    califica=int(input("Ingrese la calificacion del 1-10 de "+str(element["Nombre"])+":"))
-                    while califica<1 or califica>10:
-                        print("Calificacion invalida. Ingrese nuevamente.")
-                        califica=int(input("Ingrese la calificacion del 1-10 de "+str(element["Nombre"])+":"))
-                    calificaciones.append(califica)
-        return calificaciones
 
     def clasificarProductos(productosSeleccionados,tipoProducto):
         arregloBebidas = []
@@ -70,14 +55,14 @@ class Preferencia:
                         matriz1[f][k] = matrizMadre[m][k+1]
         return matriz1
 
-    def definirMatriz11(calificaProductos,arregloProductos,matriz1):
+    def definirMatriz11(arregloProductos,matriz1):
         cantProductos = len(arregloProductos)
         matriz11 = numpy.arange(1,((6*cantProductos)+1)).reshape(cantProductos,6)
 
-        for i in range(len(calificaProductos)):
+        for i in range(len(arregloProductos)):
             for j in range(len(matriz1)):
                 for k in range(6):
-                    matriz11[i][k] = matriz1[i][k] * calificaProductos[i]
+                    matriz11[i][k] = matriz1[i][k] * 5
         return matriz11
     
 
@@ -174,11 +159,11 @@ class Preferencia:
 
         return recomendaciones
 
-    def calcularRecomendaciones(productosSeleccionados,tipoProducto,calificaProductos):
+    def calcularRecomendaciones(productosSeleccionados,tipoProducto):
         arregloProductos = Preferencia.clasificarProductos(productosSeleccionados,tipoProducto)
         matrizMadre = Preferencia.definirMatrizMadre(tipoProducto)
         matriz1 = Preferencia.definirMatrizSeleccionados(matrizMadre,arregloProductos)
-        matriz11 = Preferencia.definirMatriz11(calificaProductos,arregloProductos,matriz1)
+        matriz11 = Preferencia.definirMatriz11(arregloProductos,matriz1)
         arreglo1 = Preferencia.definirSumaColumnasMatriz11(matriz1,matriz11)                
         arreglo11 = Preferencia.definirArregloPonderado(arregloProductos,arreglo1)
         matriz12 = Preferencia.definirMatriz12(matrizMadre,arregloProductos)

@@ -46,6 +46,11 @@
                 "ID": 6,
                 "Nombre": "Cafe frappe",
                 "Fecha": "21/12/2022 00:50:30"
+            },
+            {
+                "ID": 23,
+                "Nombre": "Chicha",
+                "Fecha": "21/12/2022 14:24:42"
             }
         ]
     }
