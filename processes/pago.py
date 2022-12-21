@@ -5,7 +5,6 @@ import datetime
 
 file_path1 = "files/pagos.json"
 
-
 class Pago:
     def __init__(self, id, nombre):
         self._id = id

@@ -4,7 +4,10 @@ from entities.administrador import Administrador
 from entities.cliente import Cliente
 from entities.paypal import PayPal
 from processes.pago import Pago
-
+from entities.productos import Producto
+from processes.carrito import Carrito
+from processes.preferencia import Preferencia
+from entities.Registro import Registro
 
 def menu():
     menu = """
@@ -52,26 +55,28 @@ def buscar_usuario():
 
 def menu_admin(usuarioEnSesion):
     menu = """
-    1.- Registrar habitacion
-    2.- Actualizar datos de habitacion
-    3.- Actualizar contrasenia
-    4.- Buscar habitacion y mostrar datos
-    5.- Mostrar catalogo de habitaciones
+    1.- Reporte de Ventas
+    2.- Mostrar Cátalogo de Productos 
     Elija una opcion: """
     option = int(input(menu))
     if option == 1:
-        pass
+        ventaTotal = Administrador.calcularVentaTotal()
+        ventaBebidas = Administrador.calcularVentaBebidas()
+        ventaComidas = Administrador.calcularVentaComidas()
+        porcentajeBebidas = Administrador.calcularPorcentaje(ventaTotal,ventaBebidas)
+        porcentajeComidas = Administrador.calcularPorcentaje(ventaTotal,ventaComidas)
+        print("---------REPORTE DE VENTAS-----------")
+        print("--> Venta Total = S/ ",ventaTotal)
+        print("--> Venta Bebidas = S/ ",ventaBebidas)
+        print("--> Venta Comidas = S/ ",ventaComidas)
+        print("--> % Venta Bebidas sobre el Total= "+str(porcentajeBebidas)+"%")
+        print("--> % Venta Comidas sobre el Total= "+str(porcentajeComidas)+"%")
+        ventaBebidaPotencial = Administrador.calcularBebidaPotencial()
+        print("--> Venta Bebida más vendida= S/ ",ventaBebidaPotencial)
+        ventaComidaPotencial = Administrador.calcularComidaPotencial()
+        print("--> Venta Comida más vendida= S/ ",ventaComidaPotencial)
 
     elif option == 2:
-        usuarioEnSesion.actualizarDatos()
-
-    elif option == 3:
-        usuarioEnSesion.actualizarContrasenia()
-
-    elif option == 4:
-        pass
-
-    elif option == 5:
         pass
 
     else:
@@ -88,6 +93,16 @@ def menu_usuarios(usuarioEnSesion):
     if op == 1:
         usuarioEnSesion.actualizarDatos()
     elif op == 2:
+        Producto.mostrarProducto()
+        #Se selecciona el pedido
+        CantidadPedir = int(input("Cantidad de productos a pedir: "))
+        numPedidos = Carrito.pedirProductos(CantidadPedir)
+        Monto = Carrito.calcularMonto(numPedidos)
+        print("MONTO A PAGAR = " + str(Monto))
+        new_Pedido = Registro(numPedidos,Monto)
+        new_Pedido.registrar()
+        
+
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard
@@ -132,7 +147,8 @@ def menu_usuarios(usuarioEnSesion):
         c = metPagoIngresado.verificarCaducidad()
 
         if a and b and c:
-            nuevoPago = Pago("concepto", 20, metPago, cuenta)
+         
+            nuevoPago = Pago(numPedidos, Monto, metPago, cuenta)
 
             if nuevoPago.pagar():
                 nuevoPago.registrarTransaccion()
@@ -140,6 +156,23 @@ def menu_usuarios(usuarioEnSesion):
                 pago = nuevoPago.cambiarFormato()
                 nuevo_cliente = Cliente(usuarioEnSesion._usuario, usuarioEnSesion._contrasenia, usuarioEnSesion._nombre, usuarioEnSesion._apellido, usuarioEnSesion._correo, metPago, pago)
                 nuevo_cliente.registrar()
+
+                tipo1 = "bebida"
+                tipo2 = "comida"
+                arregloBebidas = Preferencia.clasificarProductos(numPedidos,tipo1)
+                arregloComidas = Preferencia.clasificarProductos(numPedidos,tipo2)
+                if(len(arregloBebidas)>= 1):
+                    calificaBebidas = Preferencia.solicitarCalificaciones(arregloBebidas)
+                    recomendacionesBebidas = Preferencia.calcularRecomendaciones(numPedidos,tipo1,calificaBebidas)
+                    print("Le recomendamos las sgtes. "+tipo1+"s: ")
+                    for element in recomendacionesBebidas:
+                        print("--> "+element," ")
+                if(len(arregloComidas)>= 1):
+                    calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
+                    recomendacionesComidas = Preferencia.calcularRecomendaciones(numPedidos,tipo2,calificaComidas)
+                    print("Le recomendamos las sgtes. "+tipo2+"s: ")
+                    for element in recomendacionesComidas:
+                        print("--> "+element," ")
 
         else:
             print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")
