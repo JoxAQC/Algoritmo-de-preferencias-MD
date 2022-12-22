@@ -35,7 +35,7 @@
     {
         "Nombre": "Moccha",
         "ID": 4,
-        "Stock": 10,
+        "Stock": 9,
         "Precio": 9,
         "Categorias": [
             "Bebida",
@@ -187,7 +187,7 @@
     {
         "Nombre": "Empanada de pollo",
         "ID": 16,
-        "Stock": 10,
+        "Stock": 9,
         "Precio": 6,
         "Categorias": [
             "Comida",

@@ -50,48 +50,4 @@ class Usuario:
         with open(file_path, "w") as f:
             json.dump(data, f, indent=4)
 
-    def actualizar(self, dato):
-        with open(file_path, "r") as f:
-            usuarios = json.load(f)
-
-        for element in usuarios:
-            if element["usuario"] == self._usuario:
-                if dato == "contrasenia":
-                    element[dato] = generate_password_hash(
-                        input("Ingrese actualiazación de su " + dato + ": ")
-                    )
-                else:
-                    element[dato] = input("Ingrese actualiazación de su " + dato + ": ")
-
-        with open(file_path, "w") as f:
-            json.dump(usuarios, f, indent=4)
-
-    def actualizarDatos(self):
-        menu = """ACTUALIZAR
-            1. Usuario
-            2. Contraseña
-            3. Nombre
-            4. Apellido
-            5. Correo
-        OPCION: """
-        opcion = int(input(menu))
-
-        while opcion > 5 or opcion < 1:
-            print("Elija una opción valida")
-            opcion = int(input(menu))
-
-        if opcion == 1:
-            dato = "usuario"
-        elif opcion == 2:
-            contraseniaActual = input("Ingrese contrasenia actual: ")
-            while self._contrasenia != contraseniaActual:
-                print("Contrasenia incorrecta")
-                contraseniaActual = input("Ingrese contrasenia actual: ")
-            dato = "contrasenia"
-        elif opcion == 3:
-            dato = "nombre"
-        elif opcion == 4:
-            dato = "apellido"
-        elif opcion == 5:
-            dato = "correo"
-        self.actualizar(dato)
+    

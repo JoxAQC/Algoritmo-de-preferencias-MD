@@ -87,14 +87,11 @@ def menu_admin(usuarioEnSesion):
 
 def menu_usuarios(usuarioEnSesion):
     menu = """
-    1.- Actualizar Datos
-    2.- Comprar
+    1.- Comprar
     Elija una opcion: """
     op = int(input(menu))
 
     if op == 1:
-        usuarioEnSesion.actualizarDatos()
-    elif op == 2:
         Producto.mostrarProducto()
         #Se selecciona el pedido
         CantidadPedir = int(input("Cantidad de productos a pedir: "))
