@@ -182,7 +182,7 @@ def pagar():
             global txt
             txt = ""
             for element in recomendacionesBebidas:
-                txt+=element+" "
+                txt+=""+element+" "
         if(len(arregloComidas)>= 1):
             calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
             recomendacionesComidas = Preferencia.calcularRecomendaciones(ids,tipo2,calificaComidas)
