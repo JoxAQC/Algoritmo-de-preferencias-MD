@@ -19,7 +19,9 @@ $ pip install -r requirements.txt
 * CSS 📝
 ------------
 ### Integrantes del grupo
+- Espinoza Pacifico, Sebastian Jesus// [SebastZip](https://github.com/SebastZip) //
 - Mirano Surquislla, Fiorella Patricia // [FiorellaMirano13](https://github.com/FiorellaMirano13) //
 - Ore Paredes, Gianfranco Henry // [GHOPsT](https://github.com/GHOPsT) //
 - Quispe Cabello, José Alessandro // [JoxAQC](https://github.com/JoxAQC) //
 - Sanchez Wong, Jatziry Fernanda  // [jatmnk9](https://github.com/jatmnk9) //
+- Zapata Aguinaga, Fabio Sthefano Sneyder  // [Sneyder25](https://github.com/Sneyder25) //
