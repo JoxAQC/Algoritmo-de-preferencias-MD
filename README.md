@@ -1,11 +1,22 @@
 # 💰 Algoritmo de preferencias de usuario 💰
 #### Clonar repositorio
 
-`$ git clone https://github.com/JoxAQC/Cajero-Proeycto-MD.git`
+`$ git clone https://github.com/JoxAQC/Algoritmo-de-preferencias-MD.git`
 
  o descargarlo desde 
-> https://github.com/JoxAQC/Cajero-Proeycto-MD<link>
+> https://github.com/JoxAQC/Algoritmo-de-preferencias-MD<link>
 
+###### Se recomienda el uso de Python 3.11 o mayor y de Visual Studio Code o PyCharm
+- Acceder a la carpeta `Algoritmo-de-preferencias-MD`
+- Instalar las dependencias abriendo el terminal dentro de la carpeta e insertando:
+$ pip install -r requirements.txt 
+- Ejecutar el main.py con python 🐍🐍🐍
+### Tecnologías usadas
+* Python 🐍
+* Json 📄
+* HTML 💻
+* JavaScript ✒
+* CSS 📝
 ------------
 ### Integrantes del grupo
 - Mirano Surquislla, Fiorella Patricia // [FiorellaMirano13](https://github.com/FiorellaMirano13) //
