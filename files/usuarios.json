@@ -7,15 +7,8 @@
         "correo": "jose.quispe@gmail.com"
     },
     {
-        "usuario": "Jatmnk9",
-        "contrasenia": "pbkdf2:sha256:260000$OfQAhGlvNOFZVpmV$52d140ee2741a1461663928f655eb5f9bc39d0fc8b0b192f7e73456314ba9da6",
-        "nombre": "Jatziry",
-        "apellido": "Sanchez",
-        "correo": "jatziry.sanchez@gmail.com"
-    },
-    {
         "usuario": "Ghopst",
-        "contrasenia": "pbkdf2:sha256:260000$xmrUQvjpnbx8qaIY$827fd6abdf37cfde46dbe4012adec2ef40c0fb4e5a727308f406e7fae365d4ee",
+        "contrasenia": "pbkdf2:sha256:260000$rglDLkVSldsPluUy$92c51c6d099143ac87b860d544bbb312df1deb326fd2561ee02e7b7156c78056",
         "nombre": "Gianfranco",
         "apellido": "Ore",
         "correo": "gianfranco.ore@gmail.com"
