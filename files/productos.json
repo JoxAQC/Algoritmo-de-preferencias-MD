@@ -2,7 +2,7 @@
     {
         "Nombre": "Espresso",
         "ID": 1,
-        "Stock": 5,
+        "Stock": 4,
         "Precio": 7,
         "Categorias": [
             "Bebida",
@@ -13,7 +13,7 @@
     {
         "Nombre": "Cappuccino",
         "ID": 2,
-        "Stock": 10,
+        "Stock": 9,
         "Precio": 8,
         "Categorias": [
             "Bebida",

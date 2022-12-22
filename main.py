@@ -2,7 +2,6 @@ from entities.user import Usuario
 from entities.tarjeta import Tarjeta
 from entities.administrador import Administrador
 from entities.cliente import Cliente
-from entities.paypal import PayPal
 from processes.pago import Pago
 from entities.productos import Producto
 from processes.carrito import Carrito
@@ -112,7 +111,6 @@ def menu_usuarios(usuarioEnSesion):
         menuPago = """
         Seleccione el metodo de pago:
         1.- Tarjeta VISA/Mastercard
-        2.- PayPal
         Elija una opcion: """
 
         opSelec = int(input(menuPago))
@@ -139,14 +137,6 @@ def menu_usuarios(usuarioEnSesion):
 
             metPagoIngresado = Tarjeta(numeroTarjeta, fechaCaducidadTarjeta, codigoTarjeta, nombreTarjeta, apellidoTarjeta, emisorTarjeta)
             cuenta = metPagoIngresado._numTarjeta
-
-        elif opSelec == 2:
-            metPago = "PayPal"
-            correoPayPal = input("Ingrese su correo:")
-            contraseniaPayPal = input("Ingrese su contrasenia:")
-
-            metPagoIngresado = PayPal(correoPayPal, contraseniaPayPal)
-            cuenta = metPagoIngresado._correoPayPal
 
         a = metPagoIngresado.verificar()
         b = metPagoIngresado.verificarBloqueo() == False
