@@ -117,7 +117,7 @@ def mostrar_perfil():
     texto_final = ""
     try:
         for element in usuarioEnSesion._pago:         
-            txt= "-------------------------------------------"+element["Nombre"]+"--------------------------------------------------------------------"+element["Fecha"]+"-------------------------"
+            txt= "------------------------"+element["Nombre"]+"----------------------------------------"+element["Fecha"]+"-----------"
             texto_final += txt
 
         print (texto_final)

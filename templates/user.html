@@ -271,6 +271,7 @@
         <i class="fas fa-search" id="search-icon"></i>
         <a id="comprar" href="/orden" class="fas fa-shopping-cart"></a>
         <a href="/profile" class="fas fa-user"></a>
+        <a href="/" class="fas fa-door-open"></a>
     </div>
 
 </header>
@@ -298,7 +299,7 @@
         <div class="perfil-usuario-bio">
             <h3 class="titulo">{{nombre}} {{apellido}}</h3>
         </div>
-        <div class="perfil-usuario-footer">
+        <div class="perfil-usuario-footer" >
             <ul class="lista-datos">
                 <li><i class="icono fas fa-user-check"></i> Usuario: {{usuario}}</li>
                 <li><i class="icono fas fa-user-check"></i> Nombre: {{nombre}}</li>
@@ -334,7 +335,7 @@
             </div>
             <br>
             <br>`;
-        lista.innerHTML += texto + texto2 + `{{txt}}`;
+        lista.innerHTML += texto + texto2 + `<div class="perfil-usuario-footer"  style="font-size: 2em;">{{txt}}<div>`;
     {% endif %}
 </script>
 
