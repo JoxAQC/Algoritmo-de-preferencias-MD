@@ -58,5 +58,55 @@
         "ID": 18,
         "Nombre": "Empanada de queso",
         "Fecha": "21/12/2022 13:40:36"
+    },
+    {
+        "ID": 1,
+        "Nombre": "Espresso",
+        "Fecha": "21/12/2022 21:55:11"
+    },
+    {
+        "ID": 5,
+        "Nombre": "An\u00c3\u00ads",
+        "Fecha": "21/12/2022 21:55:11"
+    },
+    {
+        "ID": 10,
+        "Nombre": "Malteada",
+        "Fecha": "21/12/2022 21:55:11"
+    },
+    {
+        "ID": 18,
+        "Nombre": "Empanada de queso",
+        "Fecha": "21/12/2022 21:55:11"
+    },
+    {
+        "ID": 6,
+        "Nombre": "Cafe frappe",
+        "Fecha": "21/12/2022 22:01:36"
+    },
+    {
+        "ID": 1,
+        "Nombre": "Espresso",
+        "Fecha": "21/12/2022 22:01:36"
+    },
+    {
+        "ID": 5,
+        "Nombre": "An\u00c3\u00ads",
+        "Fecha": "21/12/2022 22:01:36"
+    },
+    {
+        "ID": 10,
+        "Nombre": "Malteada",
+        "Fecha": "21/12/2022 22:01:36"
+    },
+    {
+        "ID": 13,
+        "Nombre": "Croissant de pollo",
+        "Fecha": "21/12/2022 22:01:36"
+    },
+    {
+        "ID": 19,
+        "Nombre": "Empanada mixta",
+        "Fecha": "21/12/2022 22:01:36"
     }
 ]

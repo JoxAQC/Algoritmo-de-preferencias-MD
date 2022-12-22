@@ -5,8 +5,6 @@ from entities.cliente import Cliente
 from processes.pago import Pago
 from processes.preferencia import Preferencia
 import json
-from bs4 import BeautifulSoup
-import requests
 
 def buscar_usuario(user, password):
     usuarioEnSesion = Usuario.verify_session(user, password)
@@ -182,7 +180,7 @@ def pagar():
             global txt
             txt = ""
             for element in recomendacionesBebidas:
-                txt+=""+element+" "
+                txt+="-"+element+"-"
         if(len(arregloComidas)>= 1):
             calificaComidas = Preferencia.solicitarCalificaciones(arregloComidas)
             recomendacionesComidas = Preferencia.calcularRecomendaciones(ids,tipo2,calificaComidas)
