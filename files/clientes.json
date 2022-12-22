@@ -61,6 +61,36 @@
                 "ID": 4,
                 "Nombre": "Moccha",
                 "Fecha": "21/12/2022 22:23:59"
+            },
+            {
+                "ID": 13,
+                "Nombre": "Croissant de pollo",
+                "Fecha": "22/12/2022 09:19:51"
+            }
+        ]
+    },
+    {
+        "usuario": "Ghopst",
+        "contrasenia": "pbkdf2:sha256:260000$zzYxGQJILTbxy31q$bea4da7126853a17da9c0cf2f0fd207d6b4a8ad6830d7cdf697be43190da54a2",
+        "nombre": "Gianfranco",
+        "apellido": "Ore",
+        "correo": "gianfranco.ore@gmail.com",
+        "metpago": "Tarjeta",
+        "pago": [
+            {
+                "ID": 3,
+                "Nombre": "Latte",
+                "Fecha": "22/12/2022 09:17:58"
+            },
+            {
+                "ID": 21,
+                "Nombre": "Rollo de canela",
+                "Fecha": "22/12/2022 09:21:28"
+            },
+            {
+                "ID": 21,
+                "Nombre": "Rollo de canela",
+                "Fecha": "22/12/2022 09:59:06"
             }
         ]
     }

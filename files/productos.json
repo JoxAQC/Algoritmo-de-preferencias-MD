@@ -24,7 +24,7 @@
     {
         "Nombre": "Latte",
         "ID": 3,
-        "Stock": 9,
+        "Stock": 8,
         "Precio": 8,
         "Categorias": [
             "Bebida",
@@ -112,7 +112,7 @@
     {
         "Nombre": "Limonada",
         "ID": 9,
-        "Stock": 9,
+        "Stock": 7,
         "Precio": 5,
         "Categorias": [
             "Bebida",
@@ -143,7 +143,7 @@
     {
         "Nombre": "Matcha frappe",
         "ID": 11,
-        "Stock": 10,
+        "Stock": 9,
         "Precio": 16,
         "Categorias": [
             "Bebida",
@@ -154,7 +154,7 @@
     {
         "Nombre": "Croissant de pollo",
         "ID": 13,
-        "Stock": 9,
+        "Stock": 8,
         "Precio": 10,
         "Categorias": [
             "Comida",
@@ -242,7 +242,7 @@
     {
         "Nombre": "Rollo de canela",
         "ID": 21,
-        "Stock": 9,
+        "Stock": 7,
         "Precio": 7,
         "Categorias": [
             "Comida",
@@ -253,7 +253,7 @@
     {
         "Nombre": "Cheesecake de fresa",
         "ID": 22,
-        "Stock": 10,
+        "Stock": 9,
         "Precio": 8,
         "Categorias": [
             "Comida",

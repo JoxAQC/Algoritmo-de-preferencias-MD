@@ -79,7 +79,7 @@ def menu_admin(usuarioEnSesion):
         print("--> Venta Comida más vendida= S/ ",ventaComidaPotencial)
 
     elif option == 2:
-        pass
+        Producto.mostrarProducto()
 
     else:
         print("Opcion no valida")
@@ -174,7 +174,6 @@ def menu_usuarios(usuarioEnSesion):
 
         else:
             print("Compruebe la información de su " + metPago + "   e inténtalo de nuevo")
-
 
 if __name__ == "__main__":
     menu()
